@@ -93,19 +93,21 @@ public class PatologiaData {
     }
     
     public List<Patologia> traerTodoPatologia(){
+        String sql = "SELECT * FROM patologia";
         List<Patologia> patos = new ArrayList<>();
-        Patologia pato = null;
+        Patologia pato;
         try {
-            String sql = "SELECT * FROM patologia";
+            
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
+            
             while(rs.next()){
                 pato = new Patologia();
                 pato.setIdPatologia(rs.getInt(1));
                 pato.setNombre(rs.getString(2));
                 patos.add(pato);
             }
-            rs.close();
+            
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al traer todas las patologias");

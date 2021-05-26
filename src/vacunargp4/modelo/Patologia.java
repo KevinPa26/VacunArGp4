@@ -43,6 +43,6 @@ public class Patologia {
 
     @Override
     public String toString() {
-        return "Patologia{" + "idPatologia=" + idPatologia + ", nombre=" + nombre + '}';
+        return nombre;
     }
 }

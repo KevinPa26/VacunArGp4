@@ -5,15 +5,17 @@
  */
 package vacunargp4.view;
 
+import vacunargp4.control.*;
+
 /**
  *
  * @author bebo_
  */
 public class ViewMenu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ViewMenu
-     */
+    Conexion con = new Conexion();
+    PersonaData pd = new PersonaData(con);
+    PatologiaData pat = new PatologiaData(con);
+    
     public ViewMenu() {
         initComponents();
     }
@@ -86,7 +88,7 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        ViewFormulario vf = new ViewFormulario();
+        ViewFormulario vf = new ViewFormulario(pd,pat);
         vf.setVisible(true);
         escritorio.add(vf);
         escritorio.moveToFront(vf);
