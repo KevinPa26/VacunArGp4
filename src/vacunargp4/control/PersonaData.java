@@ -57,6 +57,7 @@ public class PersonaData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al crear la persona.");
+            System.out.println(ex.getMessage());
         }
     }
     

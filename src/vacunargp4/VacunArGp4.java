@@ -32,7 +32,7 @@ public class VacunArGp4 {
         PatologiaData pad = new PatologiaData(con);
         
         //crear modelos.
-        Persona p1 = new Persona(39137254,"kevin","paredes",1.7,55.5,LocalDate.of(1995, Month.OCTOBER, 26),15853182,"kevinenriquep26@gmail.com","programador","Pueyrredón","La Punta");
+        Persona p1 = new Persona(44530760,"Fabricio","Molina",1.78,80.0,LocalDate.of(2001, Month.OCTOBER, 21),2664,"bebo_sl_00@hotmail.com","¿Programador?","Pueyrredón","Capital");
         Laboratorio la1 = new Laboratorio("AstraZeneca","Oxford","Reino unido");
         Vacunatorio v1 = new Vacunatorio("HOSPITAL MARIA J. BECKER","Pueyrredón","La Punta");
         Patologia pat = new Patologia("Cancér");

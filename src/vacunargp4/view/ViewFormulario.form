@@ -27,9 +27,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                       <Component id="jlError" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -49,6 +49,11 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLSufre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jcxSi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jcxNo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -68,19 +73,16 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLCelular" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLTrabajo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLCelular" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLEmail" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLTrabajo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -93,9 +95,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLdotCom" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jtfTrabajo" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <Component id="jtfCelular" min="-2" pref="260" max="-2" attributes="0"/>
+                                  <Component id="jtfCelular" min="-2" pref="260" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="jcbTrabajo" min="-2" pref="222" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -107,46 +110,6 @@
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                      <Component id="jLTitulo" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                      <Component id="jcx3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLDepartamento" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLCiudad" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jcbCiudad" min="-2" pref="246" max="-2" attributes="0"/>
-                          <Component id="jcbDepartamento" min="-2" pref="343" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLSufre" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                              <Component id="jcxSi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jcxNo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLCuantas" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jcx1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jcx2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -176,6 +139,34 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
+                      <Component id="jLTitulo" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLCuantas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jcx1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jcx2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jcx3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLDepartamento" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLCiudad" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jcbCiudad" min="-2" pref="246" max="-2" attributes="0"/>
+                          <Component id="jcbDepartamento" min="-2" pref="343" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -186,91 +177,83 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jdcFecha" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLArroba" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLdotCom" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLDNI" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfDNI" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLAltura" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfAltura" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLPeso" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfPeso" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLPatologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbPatologia" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLPatologia1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcbPatologia1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLSufre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcxSi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcxNo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLCuantas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcx1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcx2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="jcx3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlError" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlError2" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jdcFecha" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jtfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLArroba" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLdotCom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLDNI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfDNI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLAltura" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfAltura" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbTrabajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLPatologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbPatologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLPatologia1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbPatologia1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLSufre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcxSi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcxNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLCuantas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcx1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcx2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jcx3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLDepartamento" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcbDepartamento" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jcbCiudad" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jLCiudad" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jcbCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlError" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlError2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jBEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -363,8 +346,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Trabajo:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jtfTrabajo">
     </Component>
     <Component class="javax.swing.JLabel" name="jLDepartamento">
       <Properties>
@@ -515,6 +496,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalirActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbTrabajo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
