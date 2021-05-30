@@ -43,6 +43,7 @@ public class SufreData {
             }else{
                 JOptionPane.showMessageDialog(null, "No se creo el sufre");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al crear el sufre");
         }
@@ -62,6 +63,8 @@ public class SufreData {
                 sufre.setPatologia(patod.buscarPatologiaId(rs.getInt(2)));
                 sufres.add(sufre);
             }
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al traer los sufre por idPersona");
         }
@@ -82,6 +85,29 @@ public class SufreData {
                 sufre.setPatologia(patod.buscarPatologiaId(rs.getInt(2)));
                 sufres.add(sufre);
             }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al traer los sufre por idPersona");
+        }
+        return sufres;
+    }
+    
+    public List<Sufre> traerTodoSufre(){
+        List<Sufre> sufres = new ArrayList<>();
+        Sufre sufre = null;
+        try {
+            String sql = "SELECT * FROM sufre";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                sufre = new Sufre();
+                sufre.setPersona(pd.buscarPersonaId(rs.getInt(1)));
+                sufre.setPatologia(patod.buscarPatologiaId(rs.getInt(2)));
+                sufres.add(sufre);
+            }
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al traer los sufre por idPersona");
         }

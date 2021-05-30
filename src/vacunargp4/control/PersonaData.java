@@ -166,6 +166,7 @@ public class PersonaData {
             }else{
                 JOptionPane.showMessageDialog(null, "No se pudo dar de baja la persona");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja la persona");
         }

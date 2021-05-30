@@ -156,7 +156,7 @@ public class DosisData {
         List<Dosis> ldosis = new ArrayList<>();
         Dosis dosis = null;
         try {
-            String sql = "SELECT * FROM dosis WHERE idLaboratorio = ?";
+            String sql = "SELECT * FROM dosis";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){

@@ -30,17 +30,19 @@ public class VacunArGp4 {
         LaboratorioData ld = new LaboratorioData(con);
         VacunatorioData vd = new VacunatorioData(con);
         PatologiaData pad = new PatologiaData(con);
+        SufreData sd = new SufreData(con);
+        DosisData dd = new DosisData(con);
         
         //crear modelos.
         Persona p1 = new Persona(44530760,"Fabricio","Molina",1.78,80.0,LocalDate.of(2001, Month.OCTOBER, 21),2664,"bebo_sl_00@hotmail.com","¿Programador?","Pueyrredón","Capital");
         Laboratorio la1 = new Laboratorio("AstraZeneca","Oxford","Reino unido");
         Vacunatorio v1 = new Vacunatorio("HOSPITAL MARIA J. BECKER","Pueyrredón","La Punta");
-        Patologia pat = new Patologia("Cancér");
+        Patologia pat = new Patologia("Enfermedad prueba");
  
         
           //AgregarPatologia
 //        pad.crearPatologia(pat);
-//        //Agregar una persona.
+        //Agregar una persona.
 //        pd.crearPersona(p1);
 
 //        //Buscar persona por dni.
@@ -80,10 +82,45 @@ public class VacunArGp4 {
 //        }
         
         //Probar la clase data sufreData.
+//        Persona per1 = pd.buscarPersonaDni(44530760);
+//        Patologia pat1 = pad.buscarPatologiaNombre("Enfermedad prueba");
+//        Sufre suf1 = new Sufre(per1, pat1);
+//        sd.crearSufre(suf1);
         
+//        //traer los sufre por idPersona.
+//        for(Sufre a:sd.traerSufreIdPersona(8)){
+//            System.out.println(a.toString());
+//        }
+//        //traer los sufre por idPatologia.
+//        for(Sufre a:sd.traerSufreIdPatologia(9)){
+//            System.out.println(a.toString());
+//        }
+//        //trae todos los sufre
+//        for(Sufre a:sd.traerTodoSufre()){
+//            System.out.println(a.toString());
+//        }
         
-        //probar la clase data dosis.
-        
+//        //probar la clase data dosis.
+//        Laboratorio lab = ld.buscarLaboratorioId(1);
+//        Dosis dosi = new Dosis(lab,36,true);
+//        dd.crearDosis(dosi);
+//        
+//        //traer dosis por id.
+//        System.out.println(dd.buscarDosisId(1).toString());
+//        //traer dosis por numSerie.
+//        System.out.println(dd.buscarDosisNumSerie(1).toString());
+        //traer dosis por idLaboratorio.
+//        for(Dosis a:dd.traerDosisIdLaboratorio(1)){
+//            System.out.println(a.toString());
+//        }
+//        //traer dosis por estado.
+//        for(Dosis a:dd.traerDosisEstado(true)){
+//            System.out.println(a.toString());
+//        }
+//        //traer todas las dosis.
+//        for(Dosis e:dd.traerTodoDosis()){
+//            System.out.println(e.toString());
+//        }
         
         // probar la clase data aplica.
     }
