@@ -108,15 +108,13 @@ public class DosisData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 dosis = new Dosis();
                 dosis.setIdDosis(rs.getInt(1));
                 dosis.setLab(ld.buscarLaboratorioId(rs.getInt(2)));
                 dosis.setNumSerie(rs.getInt(3));
                 dosis.setEstado(rs.getBoolean(4));
                 ldosis.add(dosis);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontraron las dosis");
             }
             rs.close();
             ps.close();
@@ -134,15 +132,13 @@ public class DosisData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setBoolean(1, estado);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 dosis = new Dosis();
                 dosis.setIdDosis(rs.getInt(1));
                 dosis.setLab(ld.buscarLaboratorioId(rs.getInt(2)));
                 dosis.setNumSerie(rs.getInt(3));
                 dosis.setEstado(rs.getBoolean(4));
                 ldosis.add(dosis);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontraron las dosis");
             }
             rs.close();
             ps.close();
@@ -159,15 +155,13 @@ public class DosisData {
             String sql = "SELECT * FROM dosis";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 dosis = new Dosis();
                 dosis.setIdDosis(rs.getInt(1));
                 dosis.setLab(ld.buscarLaboratorioId(rs.getInt(2)));
                 dosis.setNumSerie(rs.getInt(3));
                 dosis.setEstado(rs.getBoolean(4));
                 ldosis.add(dosis);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontraron las dosis");
             }
             rs.close();
             ps.close();
