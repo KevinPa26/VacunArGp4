@@ -24,7 +24,7 @@ public class Persona {
     private String trabajo;
     private String departamento;
     private String ciudad;
-    private boolean estado;
+    private boolean activo;
 
     public Persona(int idPersona, long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad) {
         this.idPersona = idPersona;
@@ -154,11 +154,13 @@ public class Persona {
         this.ciudad = ciudad;
     }
 
-    public Persona(boolean estado) {
-        this.estado = estado;
+    public boolean isActivo() {
+        return activo;
     }
-    
-    
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
     @Override
     public String toString() {
