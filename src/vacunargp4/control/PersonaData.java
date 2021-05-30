@@ -155,4 +155,19 @@ public class PersonaData {
         }
         return personas;
     }
+    
+    public void bajaPersona(int id){
+        try {
+            String sql = "UPDATE persona SET activo=0 WHERE idPersona = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "La persona se dio de baja");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo dar de baja la persona");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al dar de baja la persona");
+        }
+    }
 }

@@ -24,6 +24,7 @@ public class Persona {
     private String trabajo;
     private String departamento;
     private String ciudad;
+    private boolean estado;
 
     public Persona(int idPersona, long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad) {
         this.idPersona = idPersona;
@@ -152,6 +153,12 @@ public class Persona {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
+
+    public Persona(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
 
     @Override
     public String toString() {
