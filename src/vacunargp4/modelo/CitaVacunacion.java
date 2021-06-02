@@ -16,28 +16,40 @@ public class CitaVacunacion {
     private int idCita;
     private Persona persona;
     private Vacunatorio vacunatorio;
+    private Dosis dosis;
     private LocalDate fecha;
     private LocalTime hora;
     private String estado;
-    private String dosis;
+    private String cantDosis;
 
-    public CitaVacunacion(int idCita, Persona persona, Vacunatorio vacunatorio, LocalDate fecha, LocalTime hora, String estado, String dosis) {
+    public CitaVacunacion(int idCita, Persona persona, Vacunatorio vacunatorio, Dosis dosis, LocalDate fecha, LocalTime hora, String estado, String cantDosis) {
         this.idCita = idCita;
         this.persona = persona;
         this.vacunatorio = vacunatorio;
+        this.dosis = dosis;
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
-        this.dosis = dosis;
+        this.cantDosis = cantDosis;
     }
 
-    public CitaVacunacion(Persona persona, Vacunatorio vacunatorio, LocalDate fecha, LocalTime hora, String estado, String dosis) {
+    public CitaVacunacion(Persona persona, Vacunatorio vacunatorio, Dosis dosis, LocalDate fecha, LocalTime hora, String estado, String cantDosis) {
+        this.persona = persona;
+        this.vacunatorio = vacunatorio;
+        this.dosis = dosis;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.estado = estado;
+        this.cantDosis = cantDosis;
+    }
+
+    public CitaVacunacion(Persona persona, Vacunatorio vacunatorio, LocalDate fecha, LocalTime hora, String estado, String cantDosis) {
         this.persona = persona;
         this.vacunatorio = vacunatorio;
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
-        this.dosis = dosis;
+        this.cantDosis = cantDosis;
     }
 
     public CitaVacunacion() {
@@ -67,6 +79,14 @@ public class CitaVacunacion {
         this.vacunatorio = vacunatorio;
     }
 
+    public Dosis getDosis() {
+        return dosis;
+    }
+
+    public void setDosis(Dosis dosis) {
+        this.dosis = dosis;
+    }
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -91,17 +111,11 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public String getDosis() {
-        return dosis;
+    public String getCantDosis() {
+        return cantDosis;
     }
 
-    public void setDosis(String dosis) {
-        this.dosis = dosis;
-    }
-    
-
-    @Override
-    public String toString() {
-        return "CitaVacunacion{" + "idCita=" + idCita + ", persona=" + persona + ", vacunatorio=" + vacunatorio + ", fecha=" + fecha + ", hora=" + hora + ", estado=" + estado + '}';
+    public void setCantDosis(String cantDosis) {
+        this.cantDosis = cantDosis;
     }
 }

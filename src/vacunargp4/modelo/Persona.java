@@ -14,6 +14,7 @@ import java.time.LocalDate;
 public class Persona {
     private int idPersona;
     private long dni;
+    private Patologia patologia;
     private String nombre;
     private String apellido;
     private double altura;
@@ -26,9 +27,10 @@ public class Persona {
     private String ciudad;
     private boolean activo;
 
-    public Persona(int idPersona, long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad) {
+    public Persona(int idPersona, long dni, Patologia patologia, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad, boolean activo) {
         this.idPersona = idPersona;
         this.dni = dni;
+        this.patologia = patologia;
         this.nombre = nombre;
         this.apellido = apellido;
         this.altura = altura;
@@ -39,9 +41,26 @@ public class Persona {
         this.trabajo = trabajo;
         this.departamento = departamento;
         this.ciudad = ciudad;
+        this.activo = activo;
     }
 
-    public Persona(long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad) {
+    public Persona(long dni, Patologia patologia, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad, boolean activo) {
+        this.dni = dni;
+        this.patologia = patologia;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.altura = altura;
+        this.peso = peso;
+        this.fechaNac = fechaNac;
+        this.celular = celular;
+        this.email = email;
+        this.trabajo = trabajo;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.activo = activo;
+    }
+
+    public Persona(long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad, boolean activo) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -53,6 +72,7 @@ public class Persona {
         this.trabajo = trabajo;
         this.departamento = departamento;
         this.ciudad = ciudad;
+        this.activo = activo;
     }
 
     public Persona() {
@@ -72,6 +92,14 @@ public class Persona {
 
     public void setDni(long dni) {
         this.dni = dni;
+    }
+
+    public Patologia getPatologia() {
+        return patologia;
+    }
+
+    public void setPatologia(Patologia patologia) {
+        this.patologia = patologia;
     }
 
     public String getNombre() {
@@ -162,8 +190,5 @@ public class Persona {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + '}';
-    }
+    
 }
