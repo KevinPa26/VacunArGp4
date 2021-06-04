@@ -29,22 +29,23 @@ public class PatologiaData {
     }
     
     public void crearPatologia(Patologia pato){
-        try {
-            String sql = "INSERT INTO patologia(nombre) VALUES (?)";
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, pato.getNombre());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if(rs.next()){
-                pato.setIdPatologia(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "La patologia se creo correctamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "No se pudo crear la patologia");
+        if(!verificar(pato)){
+            try {
+                String sql = "INSERT INTO patologia(nombre) VALUES (?)";
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, pato.getNombre());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    pato.setIdPatologia(rs.getInt(1));
+                }
+                rs.close();
+                ps.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al crear la patologia");
             }
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al crear la patologia");
+        }else{
+            JOptionPane.showMessageDialog(null, "No puede crear una patologia que este en la base de datos");
         }
     }
     
@@ -113,5 +114,16 @@ public class PatologiaData {
             JOptionPane.showMessageDialog(null, "Error al traer todas las patologias");
         }
         return patos;
+    }
+    
+    private boolean verificar(Patologia a){
+        boolean e = false;
+        for(Patologia i:traerTodoPatologia()){
+            if(i.equals(a)){
+                e = true;
+                break;
+            }
+        }
+        return e;
     }
 }

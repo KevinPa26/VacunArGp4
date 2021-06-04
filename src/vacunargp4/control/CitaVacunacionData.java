@@ -304,6 +304,7 @@ public class CitaVacunacionData {
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
                 cv.setVacunatorio(vd.buscarVacunatorioId(rs.getInt(3)));
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
+                System.out.println(rs.getInt(4));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
                 cv.setEstado(rs.getString(6));

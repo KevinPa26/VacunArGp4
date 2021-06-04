@@ -5,11 +5,13 @@
  */
 package vacunargp4.modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author kevin
  */
-public class Vacunatorio {
+public class Vacunatorio implements Comparable<Vacunatorio>{
     private int idVacunatorio;
     private String nombre;
     private String departamento;
@@ -66,5 +68,33 @@ public class Vacunatorio {
     @Override
     public String toString() {
         return "Vacunatorio{" + "idVacunatorio=" + idVacunatorio + ", nombre=" + nombre + ", departamento=" + departamento + ", ciudad=" + ciudad + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return this.nombre.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vacunatorio other = (Vacunatorio) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Vacunatorio t) {
+        return this.nombre.compareToIgnoreCase(t.nombre);
     }
 }

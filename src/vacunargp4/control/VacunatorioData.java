@@ -29,24 +29,25 @@ public class VacunatorioData {
     }
     
     public void crearVacunatorio(Vacunatorio vac){
-        try {
-            String sql = "INSERT INTO vacunatorio(nombre, departamento, ciudad) VALUES (?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, vac.getNombre());
-            ps.setString(2, vac.getDepartamento());
-            ps.setString(3, vac.getCiudad());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if(rs.next()){
-                vac.setIdVacunatorio(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "El vacunatorio se creo correctamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "El vacunatorio no se pudo crear");
+        if(!verificar(vac)){
+            try {
+                String sql = "INSERT INTO vacunatorio(nombre, departamento, ciudad) VALUES (?,?,?)";
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, vac.getNombre());
+                ps.setString(2, vac.getDepartamento());
+                ps.setString(3, vac.getCiudad());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    vac.setIdVacunatorio(rs.getInt(1));
+                }
+                rs.close();
+                ps.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al crear el vacunatorio");
             }
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al crear el vacunatorio");
+        }else{
+            JOptionPane.showMessageDialog(null, "No puede crear un vacunatorio que ya este en la base de datos");
         }
     }
     
@@ -119,5 +120,16 @@ public class VacunatorioData {
             JOptionPane.showMessageDialog(null, "Error al traer todos los vacunatorios");
         }
         return vacs;
+    }
+    
+    private boolean verificar(Vacunatorio a){
+        boolean e = false;
+        for(Vacunatorio c:traerTodoVacunatorio()){
+            if(c.equals(a)){
+                e = true;
+                break;
+            }
+        }
+        return e;
     }
 }

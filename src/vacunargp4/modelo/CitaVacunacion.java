@@ -118,4 +118,10 @@ public class CitaVacunacion {
     public void setCantDosis(String cantDosis) {
         this.cantDosis = cantDosis;
     }
+
+    @Override
+    public String toString() {
+        return "CitaVacunacion{" + "idCita=" + idCita + ", persona=" + persona + ", vacunatorio=" + vacunatorio + ", dosis=" + dosis + ", fecha=" + fecha + ", hora=" + hora + ", estado=" + estado + ", cantDosis=" + cantDosis + '}';
+    }
+    
 }

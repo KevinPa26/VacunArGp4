@@ -5,11 +5,13 @@
  */
 package vacunargp4.modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author kevin
  */
-public class Laboratorio {
+public class Laboratorio implements Comparable<Laboratorio>{
     private int idLaboratorio;
     private String nombre;
     private String direccion;
@@ -67,5 +69,32 @@ public class Laboratorio {
     public String toString() {
         return "Laboratorio{" + "nombre=" + nombre + ", direccion=" + direccion + ", paisOrigen=" + paisOrigen + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        return this.nombre.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Laboratorio other = (Laboratorio) obj;
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Laboratorio t) {
+        return this.nombre.compareToIgnoreCase(t.nombre);
+    }
 }

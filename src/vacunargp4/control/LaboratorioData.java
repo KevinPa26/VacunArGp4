@@ -29,24 +29,25 @@ public class LaboratorioData {
     }
     
     public void crearLaboratorio(Laboratorio lab){
-        try {
-            String sql = "INSERT INTO laboratorio(nombre, direccion, paisOrigen) VALUES (?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, lab.getNombre());
-            ps.setString(2, lab.getDireccion());
-            ps.setString(3, lab.getPaisOrigen());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if(rs.next()){
-                lab.setIdLaboratorio(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "El laboratorio se creo correctamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "No se pudo crear el laboratorio");
+        if(!verificar(lab)){
+            try {
+                String sql = "INSERT INTO laboratorio(nombre, direccion, paisOrigen) VALUES (?,?,?)";
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, lab.getNombre());
+                ps.setString(2, lab.getDireccion());
+                ps.setString(3, lab.getPaisOrigen());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    lab.setIdLaboratorio(rs.getInt(1));
+                }
+                rs.close();
+                ps.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al crear el laboratorio");
             }
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al crear el laboratorio");
+        }else{
+            JOptionPane.showMessageDialog(null, "No puede crear un laboratorio con el mismo nombre");
         }
     }
     
@@ -95,5 +96,16 @@ public class LaboratorioData {
             JOptionPane.showMessageDialog(null, "Error al traer todos los laboratorios");
         }
         return labs;
+    }
+    
+    private boolean verificar(Laboratorio a){
+        boolean e = false;
+        for(Laboratorio l:traerTodoLaboratorio()){
+            if(l.equals(a)){
+                e = true;
+                break;
+            }
+        }
+        return e;
     }
 }

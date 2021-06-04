@@ -31,16 +31,17 @@ public class VacunArGp4 {
         VacunatorioData vd = new VacunatorioData(con);
         PatologiaData pad = new PatologiaData(con);
         DosisData dd = new DosisData(con);
+        CitaVacunacionData cd = new CitaVacunacionData(con);
         
         //crear modelos.
         Persona p1 = new Persona(44530760,"Fabricio","Molina",1.78,80.0,LocalDate.of(2001, Month.OCTOBER, 21),2664,"bebo_sl_00@hotmail.com","¿Programador?","Pueyrredón","Capital", true);
         Laboratorio la1 = new Laboratorio("AstraZeneca","Oxford","Reino unido");
         Vacunatorio v1 = new Vacunatorio("HOSPITAL MARIA J. BECKER","Pueyrredón","La Punta");
-        Patologia pat = new Patologia("Enfermedad prueba");
+        Patologia pat = new Patologia("Enfermedad prueba2");
  
         
           //AgregarPatologia
-//        pad.crearPatologia(pat);
+        pad.crearPatologia(pat);
         //Agregar una persona.
 //        pd.crearPersona(p1);
 
@@ -101,7 +102,11 @@ public class VacunArGp4 {
 //        for(Dosis e:dd.traerTodoDosis()){
 //            System.out.println(e.toString());
 //        }
-        
+
+//        //probar clase CitaVacunacionData.
+//        for(CitaVacunacion c: cd.traerTodoCitaVacunacion()){
+//            System.out.println(c);
+//        }
     }
     
 }
