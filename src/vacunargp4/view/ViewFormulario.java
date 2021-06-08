@@ -485,8 +485,16 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                 long telefono = Long.parseLong(jtfCelular.getText());
                 String trabajo = (String)jcbTrabajo.getSelectedItem();
                 
-                Persona persona = new Persona(dni, nombre, apellido, altura, peso, fechain, telefono, email, trabajo, departamento, ciudad);
-                pd.crearPersona(persona);
+                
+                if(jcxNo.isSelected()){
+                    Persona per2 = new Persona(dni, nombre, apellido, altura, peso, fechain, telefono, email, trabajo, departamento, ciudad, true);
+                    pd.crearPersonaSinPato(per2);
+                }else{
+                    Patologia pat = (Patologia) jcbPatologia.getSelectedItem();
+                    Persona per = new Persona(dni, pat, nombre, apellido, altura, peso, fechain, telefono, email, trabajo, departamento, ciudad, true);
+                    pd.crearPersonaConPato(per);
+                }
+                
                 
             }catch(NumberFormatException nb){
                 JOptionPane.showMessageDialog(this, "Por favor, revise los datos.");

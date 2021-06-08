@@ -29,12 +29,17 @@ public class ViewMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmPersonas = new javax.swing.JMenu();
         jmiFormulario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jmiPedir = new javax.swing.JMenuItem();
         jmiEstado = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,10 +68,21 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu2.setText("Citas");
 
+        jmiPedir.setText("Pedir una Cita");
+        jmiPedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPedirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiPedir);
+
         jmiEstado.setText("Estado de mi Cita");
         jMenu2.add(jmiEstado);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu1.setText("jMenu1");
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -93,6 +109,15 @@ public class ViewMenu extends javax.swing.JFrame {
         escritorio.add(vf);
         escritorio.moveToFront(vf);
     }//GEN-LAST:event_jmiFormularioActionPerformed
+
+    private void jmiPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPedirActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewInscripcion vi = new ViewInscripcion(pd);
+        vi.setVisible(true);
+        escritorio.add(vi);
+        escritorio.moveToFront(vi);
+    }//GEN-LAST:event_jmiPedirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,10 +156,13 @@ public class ViewMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jmPersonas;
     private javax.swing.JMenuItem jmiEstado;
     private javax.swing.JMenuItem jmiFormulario;
+    private javax.swing.JMenuItem jmiPedir;
     // End of variables declaration//GEN-END:variables
 }

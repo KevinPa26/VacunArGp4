@@ -128,12 +128,12 @@ public class PersonaData {
         return persona;
     }
     
-    public Persona buscarPersonaDni(int dni){
+    public Persona buscarPersonaDni(long dni){
         Persona persona = null;
         try {
             String sql = "SELECT * FROM persona WHERE dni = ?";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, dni);
+            ps.setLong(1, dni);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 persona = new Persona();
