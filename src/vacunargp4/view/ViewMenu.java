@@ -15,6 +15,9 @@ public class ViewMenu extends javax.swing.JFrame {
     Conexion con = new Conexion();
     PersonaData pd = new PersonaData(con);
     PatologiaData pat = new PatologiaData(con);
+    VacunatorioData vd = new VacunatorioData(con);
+    LaboratorioData ld = new LaboratorioData(con);
+    DosisData dd = new DosisData(con);
     
     public ViewMenu() {
         initComponents();
@@ -30,6 +33,9 @@ public class ViewMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmPersonas = new javax.swing.JMenu();
@@ -37,9 +43,17 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jmiPedir = new javax.swing.JMenuItem();
         jmiEstado = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        jmCentro = new javax.swing.JMenu();
+        jmLaboratorio = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         jMenuItem2.setText("jMenuItem2");
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,8 +95,39 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setText("jMenu1");
-        jMenuBar1.add(jMenu1);
+        jmCentro.setText("Centro de Vacunacion");
+        jmCentro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmCentroMouseClicked(evt);
+            }
+        });
+        jmCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCentroActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmCentro);
+
+        jmLaboratorio.setText("Laboratorio");
+        jmLaboratorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmLaboratorioMouseClicked(evt);
+            }
+        });
+        jmLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmLaboratorioActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmLaboratorio);
+
+        jMenu3.setText("Dosis");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -113,11 +158,46 @@ public class ViewMenu extends javax.swing.JFrame {
     private void jmiPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPedirActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        ViewInscripcion vi = new ViewInscripcion(pd);
+        ViewInscripcion vi = new ViewInscripcion(pd,vd);
         vi.setVisible(true);
         escritorio.add(vi);
         escritorio.moveToFront(vi);
     }//GEN-LAST:event_jmiPedirActionPerformed
+
+    private void jmCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCentroActionPerformed
+        
+    }//GEN-LAST:event_jmCentroActionPerformed
+
+    private void jmCentroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmCentroMouseClicked
+        escritorio.removeAll();
+        escritorio.repaint();
+        viewCentroVacunacion vc = new viewCentroVacunacion(vd);
+        vc.setVisible(true);
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+    }//GEN-LAST:event_jmCentroMouseClicked
+
+    private void jmLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmLaboratorioActionPerformed
+        
+    }//GEN-LAST:event_jmLaboratorioActionPerformed
+
+    private void jmLaboratorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmLaboratorioMouseClicked
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewLaboratorio vl = new ViewLaboratorio(ld);
+        vl.setVisible(true);
+        escritorio.add(vl);
+        escritorio.moveToFront(vl);
+    }//GEN-LAST:event_jmLaboratorioMouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewDosis vd = new ViewDosis(dd, ld);
+        vd.setVisible(true);
+        escritorio.add(vd);
+        escritorio.moveToFront(vd);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -158,8 +238,13 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenu jmCentro;
+    private javax.swing.JMenu jmLaboratorio;
     private javax.swing.JMenu jmPersonas;
     private javax.swing.JMenuItem jmiEstado;
     private javax.swing.JMenuItem jmiFormulario;

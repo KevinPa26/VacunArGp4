@@ -67,7 +67,7 @@ public class Vacunatorio implements Comparable<Vacunatorio>{
 
     @Override
     public String toString() {
-        return "Vacunatorio{" + "idVacunatorio=" + idVacunatorio + ", nombre=" + nombre + ", departamento=" + departamento + ", ciudad=" + ciudad + '}';
+        return nombre;
     }
 
     @Override

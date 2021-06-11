@@ -40,6 +40,7 @@ public class LaboratorioData {
                 ResultSet rs = ps.getGeneratedKeys();
                 if(rs.next()){
                     lab.setIdLaboratorio(rs.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Laboratorio registrado satisfactoriamente.");
                 }
                 rs.close();
                 ps.close();

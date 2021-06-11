@@ -40,6 +40,7 @@ public class VacunatorioData {
                 ResultSet rs = ps.getGeneratedKeys();
                 if(rs.next()){
                     vac.setIdVacunatorio(rs.getInt(1));
+                    JOptionPane.showMessageDialog(null, "El Centro de Vacunacion se creo perfectamente.");
                 }
                 rs.close();
                 ps.close();
