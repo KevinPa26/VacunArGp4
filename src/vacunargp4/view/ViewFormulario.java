@@ -110,6 +110,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jLPeso = new javax.swing.JLabel();
         jtfPeso = new javax.swing.JTextField();
         jLFecha = new javax.swing.JLabel();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
         jLEmail = new javax.swing.JLabel();
         jtfEmail1 = new javax.swing.JTextField();
         jLArroba = new javax.swing.JLabel();
@@ -118,11 +119,11 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jLCelular = new javax.swing.JLabel();
         jtfCelular = new javax.swing.JTextField();
         jLTrabajo = new javax.swing.JLabel();
+        jcbTrabajo = new javax.swing.JComboBox<>();
         jLDepartamento = new javax.swing.JLabel();
         jcbDepartamento = new javax.swing.JComboBox<>();
         jLCiudad = new javax.swing.JLabel();
         jcbCiudad = new javax.swing.JComboBox<>();
-        jdcFecha = new com.toedter.calendar.JDateChooser();
         jlError = new javax.swing.JLabel();
         jlError2 = new javax.swing.JLabel();
         jLSufre = new javax.swing.JLabel();
@@ -139,7 +140,6 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jBEnviar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
-        jcbTrabajo = new javax.swing.JComboBox<>();
 
         jLTitulo.setText("Formulario de Inscripcion VacunAr 2021");
 
@@ -168,6 +168,11 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
 
         jLEmail.setText("Email:");
 
+        jtfEmail1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfEmail1FocusLost(evt);
+            }
+        });
         jtfEmail1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfEmail1ActionPerformed(evt);
@@ -176,6 +181,11 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
 
         jLArroba.setText("@");
 
+        jtfEmail2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfEmail2FocusLost(evt);
+            }
+        });
         jtfEmail2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfEmail2ActionPerformed(evt);
@@ -595,12 +605,28 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfNombreActionPerformed
 
     private void jtfEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmail1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jtfEmail1ActionPerformed
 
     private void jtfEmail2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmail2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jtfEmail2ActionPerformed
+
+    private void jtfEmail1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEmail1FocusLost
+       String nousar1 = "@";
+        String nousar2 = ".com";
+        if(jtfEmail1.getText().contains(nousar1)){
+            JOptionPane.showMessageDialog(this, "El email no debe contener '@' o '.com' estos datos se seleccionan por defecto");
+    }
+    }//GEN-LAST:event_jtfEmail1FocusLost
+
+    private void jtfEmail2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEmail2FocusLost
+       String nousar1 = "@";
+        String nousar2 = ".com";
+        if(jtfEmail2.getText().contains(nousar1) || jtfEmail2.getText().contains(nousar2)){
+            JOptionPane.showMessageDialog(this, "El email no debe contener '@' o '.com' estos datos se seleccionan por defecto");
+        }
+    }//GEN-LAST:event_jtfEmail2FocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

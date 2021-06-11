@@ -310,6 +310,8 @@
         <Property name="text" type="java.lang.String" value="Fecha de Nacimiento:"/>
       </Properties>
     </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdcFecha">
+    </Component>
     <Component class="javax.swing.JLabel" name="jLEmail">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email:"/>
@@ -317,6 +319,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfEmail1">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfEmail1FocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfEmail1ActionPerformed"/>
       </Events>
     </Component>
@@ -327,6 +330,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfEmail2">
       <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfEmail2FocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfEmail2ActionPerformed"/>
       </Events>
     </Component>
@@ -346,6 +350,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Trabajo:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbTrabajo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLDepartamento">
       <Properties>
@@ -376,8 +390,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jdcFecha">
     </Component>
     <Component class="javax.swing.JLabel" name="jlError">
       <Properties>
@@ -496,16 +508,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalirActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbTrabajo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
