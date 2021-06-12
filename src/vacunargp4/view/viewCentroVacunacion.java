@@ -16,131 +16,9 @@ import vacunargp4.control.*;
  */
 public class viewCentroVacunacion extends javax.swing.JInternalFrame {
     VacunatorioData vd;
-    List<String> departamentos = new ArrayList<>();
-    
-String depAya[] = new String[]{
-    "Candelaria",
-    "La Majada",
-    "Leandro N. Alem",
-    "Luján",
-    "Quines",
-    "Río Juan Gómez",
-    "San Francisco del Monte de Oro"};
-    
-    String depPuey[] = new String[]{
-    "San Luis (capital provincial)",
-    "Alto Pencoso",
-    "Balde", 
-    "Beazley",
-    "Cazador",
-    "Chosmes",
-    "Desaguadero",
-    "El Volcán",
-    "Jarilla",
-    "Juana Koslay", 
-    "La Punta",
-    "Mosmota",
-    "Potrero de los Funes",
-    "Salinas del Bebedero",
-    "San Gerónimo",
-    "Zanjitas"};
-    
-    String depBel[] = new String[]{
-     "La Calera ",
-    "Nogolí "  ,
-    "Villa de la Quebrada "  ,
-    "Villa General Roca"  
-    };
-    String depCha[] = new String[]{
-        "Concarán",
-"Cortaderas",
-"Naschel",
-"Papagayos",
-"Renca",
-"San Pablo",
-"Tilisarao",
-"Villa del Carmen",
-"Villa Larca"
-    };
-    String depPeder[] = new String[]{
-        "Juan Jorba",
-    "Juan Llerena",
-    "Justo Daract",
-    "La Esquina",
-    "La Punilla",
-    "Lavaisse",
-    "San José del Morro",
-    "Villa Mercedes"
-    };
-    String depPrin[] = new String[]{
-        "Carolina",
-"El Trapiche",
-"Fraga",
-"La Bajada",
-"La Florida",
-"La Toma",
-"Riocito",
-"Saladillo",
-"Estancia Grande"
-    };
-    String depJuj[] = new String[]{
-        "Carpintería",
-"Cerro de Oro",
-"Lafinur",
-"Los Cajones",
-"Los Molles",
-"Merlo",
-"Santa Rosa de Conlara",
-"Talita"
-    };
-    String depDup[] = new String[]{
-      "Anchorena",
-"Arizona",
-"Bagual",
-"Batavia",
-"Buena Esperanza",
-"Fortín El Patria",
-"Fortuna",
-"La Maroma",
-"Martín de Loyola",
-"Nahuel Mapá",
-"Navia",
-"Nueva Galia",
-"Unión"  
-    };
-    String depMart[] = new String[]{
-      "Anchorena",
-"Arizona",
-"Bagual",
-"Batavia",
-"Buena Esperanza",
-"Fortín El Patria",
-"Fortuna",
-"La Maroma",
-"Martín de Loyola",
-"Nahuel Mapá",
-"Navia",
-"Nueva Galia",
-"Unión"  
-    };
     public viewCentroVacunacion(VacunatorioData vd) {
         initComponents();
         this.vd = vd;
-        departamentos.add("Ayacucho");
-        departamentos.add("Belgrano");
-        departamentos.add("Chacabuco");
-        departamentos.add("Coronel Pringles");
-        departamentos.add("General Pedernera");
-        departamentos.add("Gobernador Dupuy");
-        departamentos.add("Junín");
-        departamentos.add("Pueyrredón");
-        departamentos.add("Libertador General San Martín");
-        llenarDepartamentos();
-    }
-    void llenarDepartamentos(){
-        for(String i:departamentos){
-            jcbDepartamento.addItem(i);
-        }
     }
 
     /**
@@ -175,6 +53,7 @@ String depAya[] = new String[]{
             }
         });
 
+        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Ayacucho", "Belgrano", "Chacabuco", "Coronel Pringles", "General Pedernera", "Gobernador Dupuy", "Junín", "Pueyrredón", "Libertador General San Martín" }));
         jcbDepartamento.setToolTipText("");
         jcbDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,25 +76,21 @@ String depAya[] = new String[]{
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(29, 29, 29)
-                                .addComponent(jtfNombre))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
                         .addGap(92, 92, 92))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(54, 54, 54)
-                                .addComponent(jcbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 42, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -240,7 +115,7 @@ String depAya[] = new String[]{
                     .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jbRegistrar)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,60 +126,117 @@ String depAya[] = new String[]{
     }//GEN-LAST:event_jtfNombreActionPerformed
 
     private void jcbDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDepartamentoActionPerformed
+        jcbCiudad.removeAllItems();
         switch((String)jcbDepartamento.getSelectedItem()){
-            case "Pueyrredón":
-                jcbCiudad.removeAllItems();
-                for(String j:depPuey){
-               jcbCiudad.addItem(j);
-                }
+            case "Pueyrredón":{
+                jcbCiudad.addItem("San Luis (capital provincial)");
+                jcbCiudad.addItem("Alto Pencoso");
+                jcbCiudad.addItem("Balde");
+                jcbCiudad.addItem("Beazley");
+                jcbCiudad.addItem("Cazador");
+                jcbCiudad.addItem("Chosmes");
+                jcbCiudad.addItem("Desaguadero");
+                jcbCiudad.addItem("El Volcán");
+                jcbCiudad.addItem("Jarilla");
+                jcbCiudad.addItem("Juana Koslay");
+                jcbCiudad.addItem("La Punta");
+                jcbCiudad.addItem("Mosmota");
+                jcbCiudad.addItem("Potrero de los Funes");
+                jcbCiudad.addItem("Salinas del Bebedero");
+                jcbCiudad.addItem("San Gerónimo");
+                jcbCiudad.addItem("Desaguadero");
+                jcbCiudad.addItem("Zanjitas");
                 break;
-            case "Belgrano":
-                jcbCiudad.removeAllItems();
-                for(String b:depBel){
-                    jcbCiudad.addItem(b);
-                }
+            }
+            case "Belgrano":{
+                jcbCiudad.addItem("La Calera ");
+                jcbCiudad.addItem("Nogolí ");
+                jcbCiudad.addItem("Villa de la Quebrada ");
+                jcbCiudad.addItem("Villa General Roca");
                 break;
-            case "Ayacucho":
-                jcbCiudad.removeAllItems();
-                for(String a:depAya){
-                    jcbCiudad.addItem(a);
-                }
+            }
+            case "Ayacucho":{
+                jcbCiudad.addItem("Candelaria");
+                jcbCiudad.addItem("La Majada");
+                jcbCiudad.addItem("Leandro N. Alem");
+                jcbCiudad.addItem("Luján");
+                jcbCiudad.addItem("Quines");
+                jcbCiudad.addItem("Río Juan Gómez");
+                jcbCiudad.addItem("San Francisco del Monte de Oro");
                 break;
-            case "Chacabuco":
-                jcbCiudad.removeAllItems();
-                for(String c:depCha){
-                    jcbCiudad.addItem(c);
-                }
+            }
+            case "Chacabuco":{
+                jcbCiudad.addItem("Concarán");
+                jcbCiudad.addItem("Cortaderas");
+                jcbCiudad.addItem("Naschel");
+                jcbCiudad.addItem("Papagayos");
+                jcbCiudad.addItem("Renca");
+                jcbCiudad.addItem("San Pablo");
+                jcbCiudad.addItem("Tilisarao");
+                jcbCiudad.addItem("Villa del Carmen");
+                jcbCiudad.addItem("Villa Larca");
                 break;
-            case "Coronel Pringles":
-                jcbCiudad.removeAllItems();
-                for(String cp:depPrin){
-                    jcbCiudad.addItem(cp);
-                }
+            }
+            case "Coronel Pringles":{
+                jcbCiudad.addItem("Carolina");
+                jcbCiudad.addItem("El Trapiche");
+                jcbCiudad.addItem("Fraga");
+                jcbCiudad.addItem("La Bajada");
+                jcbCiudad.addItem("La Florida");
+                jcbCiudad.addItem("La Toma");
+                jcbCiudad.addItem("Riocito");
+                jcbCiudad.addItem("Saladillo");
+                jcbCiudad.addItem("Estancia Grande");
                 break;
-            case "Coronel Pedernera":
-                jcbCiudad.removeAllItems();
-                for(String cs:depPrin){
-                    jcbCiudad.addItem(cs);
-                }
+            }
+            case "Coronel Pedernera":{
+                jcbCiudad.addItem("Juan Jorba");
+                jcbCiudad.addItem("Juan Llerena");
+                jcbCiudad.addItem("Justo Daract");
+                jcbCiudad.addItem("La Esquina");
+                jcbCiudad.addItem("La Punilla");
+                jcbCiudad.addItem("Lavaisse");
+                jcbCiudad.addItem("San José del Morro");
+                jcbCiudad.addItem("Villa Mercedes");
                 break;
-            case "Gobernador Dupuy":
-                jcbCiudad.removeAllItems();
-                for(String d:depDup){
-                    jcbCiudad.addItem(d);
-                }
+            }
+            case "Gobernador Dupuy":{
+                jcbCiudad.addItem("Anchorena");
+                jcbCiudad.addItem("Arizona");
+                jcbCiudad.addItem("Bagual");
+                jcbCiudad.addItem("Batavia");
+                jcbCiudad.addItem("Buena Esperanza");
+                jcbCiudad.addItem("Fortín El Patria");
+                jcbCiudad.addItem("Fortuna");
+                jcbCiudad.addItem("La Maroma");
+                jcbCiudad.addItem("Martín de Loyola");
+                jcbCiudad.addItem("Nahuel Mapá");
+                jcbCiudad.addItem("Navia");
+                jcbCiudad.addItem("Nueva Galia");
+                jcbCiudad.addItem("Unión");
                 break;
-            case "Junín":
-                jcbCiudad.removeAllItems();
-                for(String j:depJuj){
-                    jcbCiudad.addItem(j);
-                }
+            }
+            case "Junín":{
+                jcbCiudad.addItem("Carpintería");
+                jcbCiudad.addItem("Cerro de Oro");
+                jcbCiudad.addItem("Lafinur");
+                jcbCiudad.addItem("Los Cajones");
+                jcbCiudad.addItem("Los Molles");
+                jcbCiudad.addItem("Merlo");
+                jcbCiudad.addItem("Santa Rosa de Conlara");
+                jcbCiudad.addItem("Talita");
                 break;
-            case "Libertador General San Martín":
-                jcbCiudad.removeAllItems();
-                for(String san:depMart){
-                    jcbCiudad.addItem(san);
-                }
+            }
+            case "Libertador General San Martín":{
+                jcbCiudad.addItem("Las Aguadas");
+                jcbCiudad.addItem("Las Chacras");
+                jcbCiudad.addItem("Las Lagunas");
+                jcbCiudad.addItem("Las Vertientes");
+                jcbCiudad.addItem("Paso Grande");
+                jcbCiudad.addItem("San Martín");
+                jcbCiudad.addItem("Villa de Praga");
+                break;
+            }
         }
     }//GEN-LAST:event_jcbDepartamentoActionPerformed
 

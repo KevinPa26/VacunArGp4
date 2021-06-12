@@ -13,7 +13,7 @@ public class Dosis {
     private int idDosis;
     private Laboratorio lab;
     private int numSerie;
-    private boolean estado;
+    private boolean estado = true;
 
     public Dosis(int idDosis, Laboratorio lab, int numSerie, boolean estado) {
         this.idDosis = idDosis;
@@ -27,6 +27,13 @@ public class Dosis {
         this.numSerie = numSerie;
         this.estado = estado;
     }
+    
+    public Dosis(Laboratorio lab, int numSerie) {
+        this.lab = lab;
+        this.numSerie = numSerie;
+        this.estado = estado;
+    }
+
 
     public Dosis() {
     }

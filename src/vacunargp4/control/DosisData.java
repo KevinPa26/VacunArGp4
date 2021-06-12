@@ -170,4 +170,21 @@ public class DosisData {
         }
         return ldosis;
     }
+
+    public int maxNumSerie(){
+        int a = 0;
+        try {
+            String sql = "SELECT MAX(numSerie) FROM dosis";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                a = rs.getInt(1);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DosisData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a;
+    }
 }

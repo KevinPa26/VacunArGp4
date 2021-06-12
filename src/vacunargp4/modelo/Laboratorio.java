@@ -67,7 +67,7 @@ public class Laboratorio implements Comparable<Laboratorio>{
 
     @Override
     public String toString() {
-        return direccion;
+        return nombre;
     }
 
     @Override

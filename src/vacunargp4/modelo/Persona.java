@@ -44,6 +44,22 @@ public class Persona {
         this.activo = activo;
     }
 
+    public Persona(int idPersona, long dni, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad, boolean activo) {
+        this.idPersona = idPersona;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.altura = altura;
+        this.peso = peso;
+        this.fechaNac = fechaNac;
+        this.celular = celular;
+        this.email = email;
+        this.trabajo = trabajo;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.activo = activo;
+    }
+
     public Persona(long dni, Patologia patologia, String nombre, String apellido, double altura, double peso, LocalDate fechaNac, long celular, String email, String trabajo, String departamento, String ciudad, boolean activo) {
         this.dni = dni;
         this.patologia = patologia;
@@ -188,6 +204,11 @@ public class Persona {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "idPersona=" + idPersona + ", dni=" + dni + ", patologia=" + patologia + ", nombre=" + nombre + ", apellido=" + apellido + ", altura=" + altura + ", peso=" + peso + ", fechaNac=" + fechaNac + ", celular=" + celular + ", email=" + email + ", trabajo=" + trabajo + ", departamento=" + departamento + ", ciudad=" + ciudad + ", activo=" + activo + '}';
     }
 
     

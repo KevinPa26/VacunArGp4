@@ -117,6 +117,7 @@ public class PersonaData {
                 persona.setTrabajo(rs.getString(11));
                 persona.setDepartamento(rs.getString(12));
                 persona.setCiudad(rs.getString(13));
+                persona.setActivo(rs.getBoolean(14));
             }else{
                 JOptionPane.showConfirmDialog(null, "No se encontro la persona");
             }
@@ -150,6 +151,7 @@ public class PersonaData {
                 persona.setTrabajo(rs.getString(11));
                 persona.setDepartamento(rs.getString(12));
                 persona.setCiudad(rs.getString(13));
+                persona.setActivo(rs.getBoolean(14));
             }else{
                 JOptionPane.showConfirmDialog(null, "No se encontro la persona");
             }
@@ -183,6 +185,7 @@ public class PersonaData {
                 persona.setTrabajo(rs.getString(11));
                 persona.setDepartamento(rs.getString(12));
                 persona.setCiudad(rs.getString(13));
+                persona.setActivo(rs.getBoolean(14));
                 personas.add(persona);
             }
             rs.close();
@@ -206,6 +209,65 @@ public class PersonaData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al dar de baja la persona");
+        }
+    }
+    
+    public void ActualizarPerConPato(Persona persona){
+        try {
+            String sql = "UPDATE persona SET dni = ?, idPatologia = ?, nombre = ?, apellido = ?,altura = ?, peso = ?, fechaNac = ?, celular = ?,email = ?, trabajo = ?, departamento = ?,ciudad = ?,activo = ? WHERE idPersona = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, persona.getDni());
+            ps.setInt(2, persona.getPatologia().getIdPatologia());
+            ps.setString(3, persona.getNombre());
+            ps.setString(4, persona.getApellido());
+            ps.setDouble(5, persona.getAltura());
+            ps.setDouble(6, persona.getPeso());
+            ps.setDate(7, Date.valueOf(persona.getFechaNac()));
+            ps.setLong(8, persona.getCelular());
+            ps.setString(9, persona.getEmail());
+            ps.setString(10, persona.getTrabajo());
+            ps.setString(11, persona.getDepartamento());
+            ps.setString(12, persona.getCiudad());
+            ps.setBoolean(13, persona.isActivo());
+            ps.setInt(14, persona.getIdPersona());
+            
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actulizar la persona");
+        }
+    }
+    
+    public void ActualizarPerSinPato(Persona persona){
+        try {
+            String sql = "UPDATE persona SET dni = ?, nombre = ?, apellido = ?,altura = ?, peso = ?, fechaNac = ?, celular = ?,email = ?, trabajo = ?, departamento = ?,ciudad = ?,activo = ? WHERE idPersona = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, persona.getDni());
+            ps.setString(2, persona.getNombre());
+            ps.setString(3, persona.getApellido());
+            ps.setDouble(4, persona.getAltura());
+            ps.setDouble(5, persona.getPeso());
+            ps.setDate(6, Date.valueOf(persona.getFechaNac()));
+            ps.setLong(7, persona.getCelular());
+            ps.setString(8, persona.getEmail());
+            ps.setString(9, persona.getTrabajo());
+            ps.setString(10, persona.getDepartamento());
+            ps.setString(11, persona.getCiudad());
+            ps.setBoolean(12, persona.isActivo());
+            ps.setInt(13, persona.getIdPersona());
+            
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actulizar la persona");
         }
     }
 }
