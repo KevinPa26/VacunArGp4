@@ -109,4 +109,24 @@ public class LaboratorioData {
         }
         return e;
     }
+    
+    public void ActualizarLab(Laboratorio lab){
+        try {
+            String sql = "UPDATE laboratorio SET nombre = ?, direccion = ?, paisOrigen = ? WHERE idLaboratorio = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, lab.getNombre());
+            ps.setString(2, lab.getDireccion());
+            ps.setString(3, lab.getPaisOrigen());
+            ps.setInt(4, lab.getIdLaboratorio());
+            
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar laboratorio");
+        }
+    }
 }

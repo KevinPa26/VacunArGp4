@@ -7,6 +7,7 @@ package vacunargp4.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import vacunargp4.modelo.*;
 import vacunargp4.control.*;
 
@@ -16,9 +17,19 @@ import vacunargp4.control.*;
  */
 public class viewCentroVacunacion extends javax.swing.JInternalFrame {
     VacunatorioData vd;
+    private DefaultTableModel tabla;
+    
     public viewCentroVacunacion(VacunatorioData vd) {
         initComponents();
         this.vd = vd;
+        tabla = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        armarCabecera();
+        llenarTabla();
     }
 
     /**
@@ -38,6 +49,8 @@ public class viewCentroVacunacion extends javax.swing.JInternalFrame {
         jcbDepartamento = new javax.swing.JComboBox<>();
         jcbCiudad = new javax.swing.JComboBox<>();
         jbRegistrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableVacunatorio = new javax.swing.JTable();
 
         jLabel1.setText("Centro de Vacunacion vacunAr 2001");
 
@@ -68,34 +81,50 @@ public class viewCentroVacunacion extends javax.swing.JInternalFrame {
             }
         });
 
+        jTableVacunatorio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableVacunatorio);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(92, 92, 92))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(92, 92, 92))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jbRegistrar)
+                                .addGap(150, 150, 150))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(54, 54, 54)
-                                .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 42, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbRegistrar)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(54, 54, 54)
+                                    .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,9 +142,10 @@ public class viewCentroVacunacion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbRegistrar)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -246,15 +276,42 @@ public class viewCentroVacunacion extends javax.swing.JInternalFrame {
         String nombre = jtfNombre.getText();
         Vacunatorio vac = new Vacunatorio(nombre, dep, nombre);
         vd.crearVacunatorio(vac);
-        
+        llenarTabla();
     }//GEN-LAST:event_jbRegistrarActionPerformed
-
+    
+    private void armarCabecera(){
+        ArrayList<Object> columnas = new ArrayList<>();
+        columnas.add("IDVACUNATORIO");
+        columnas.add("NOMBRE");
+        columnas.add("DEPARTAMENTO");
+        columnas.add("CIUDAD");
+        for(Object it:columnas){
+            tabla.addColumn(it);
+        }
+        jTableVacunatorio.setModel(tabla);
+    }
+    
+    private void llenarTabla(){
+        borrarFilas();
+        for(Vacunatorio a:vd.traerTodoVacunatorio()){
+            tabla.addRow(new Object[]{a.getIdVacunatorio(), a.getNombre(), a.getDepartamento(), a.getCiudad()});
+        }
+    }
+    
+    private void borrarFilas(){
+        int a = tabla.getRowCount()-1;
+        for(int i = a; i>=0; i--){
+            tabla.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableVacunatorio;
     private javax.swing.JButton jbRegistrar;
     private javax.swing.JComboBox<String> jcbCiudad;
     private javax.swing.JComboBox<String> jcbDepartamento;

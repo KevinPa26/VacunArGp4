@@ -5,6 +5,8 @@
  */
 package vacunargp4.view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import vacunargp4.control.LaboratorioData;
 import vacunargp4.modelo.Laboratorio;
 
@@ -14,9 +16,20 @@ import vacunargp4.modelo.Laboratorio;
  */
 public class ViewLaboratorio extends javax.swing.JInternalFrame {
     LaboratorioData ld;
+    private DefaultTableModel tabla;
+    private Laboratorio labElegido;
+    
     public ViewLaboratorio(LaboratorioData ld) {
         initComponents();
         this.ld = ld;
+        tabla = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        armarCabecera();
+        llenarTabla();
     }
 
     /**
@@ -28,6 +41,8 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
@@ -36,6 +51,23 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
         jtfDire = new javax.swing.JTextField();
         jtfRegistrar = new javax.swing.JButton();
         jcbPais = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableLab = new javax.swing.JTable();
+        jtId = new javax.swing.JTextField();
+        jbActualizar = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Gestion Laboratorios vacunAr");
 
@@ -54,6 +86,31 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
 
         jcbPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia-Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guinea", "Guinea Ecuatorial", "Guinea-Bisáu", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kosovo", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Palestina", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumania", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Taiwán", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Vaticano", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
 
+        jTableLab.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableLabMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableLab);
+
+        jbActualizar.setText("Actualizar");
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,32 +118,41 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(2, 2, 2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtfNombre)
-                                    .addComponent(jtfDire, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                    .addComponent(jcbPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 21, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfNombre)
+                            .addComponent(jtfDire, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(jcbPais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jtfRegistrar)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbActualizar)
+                .addGap(18, 18, 18)
+                .addComponent(jtfRegistrar)
+                .addGap(149, 149, 149))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(118, 118, 118))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -99,8 +165,12 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtfDire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jtfRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfRegistrar)
+                    .addComponent(jbActualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -113,15 +183,94 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
         String d = jtfDire.getText();
         Laboratorio lab = new Laboratorio(n, d, p);
         ld.crearLaboratorio(lab);
+        llenarTabla();
     }//GEN-LAST:event_jtfRegistrarActionPerformed
 
+    private void jTableLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLabMouseClicked
+        // TODO add your handling code here:
+        
+        int filaSel = jTableLab.getSelectedRow();
+        
+        if(filaSel != -1){
+            int id = (Integer)jTableLab.getValueAt(filaSel, 0);
+            String nom = (String)jTableLab.getValueAt(filaSel, 1);
+            String dir = (String)jTableLab.getValueAt(filaSel, 2);
+            String pais = (String)jTableLab.getValueAt(filaSel, 3);
+            
+            jtId.setText(id+"");
+            jtfNombre.setText(nom);
+            jcbPais.setSelectedItem(pais);
+            jtfDire.setText(dir);
+            
+            labElegido = new Laboratorio();
+            labElegido.setIdLaboratorio(id);
+            labElegido.setNombre(nom);
+            labElegido.setDireccion(dir);
+            labElegido.setPaisOrigen(pais);
+        }
+    }//GEN-LAST:event_jTableLabMouseClicked
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(jtId.getText());
+        String nom = jtfNombre.getText();
+        String pais = jcbPais.getSelectedItem().toString();
+        String dir = jtfDire.getText();
+        
+        labElegido.setNombre(nom);
+        labElegido.setDireccion(dir);
+        labElegido.setPaisOrigen(pais);
+        
+        ld.ActualizarLab(labElegido);
+        limpiar();
+        llenarTabla();
+    }//GEN-LAST:event_jbActualizarActionPerformed
+    
+    private void armarCabecera(){
+        ArrayList<Object> columnas = new ArrayList<>();
+        columnas.add("IDLAB");
+        columnas.add("NOMBRE");
+        columnas.add("DIRECCION");
+        columnas.add("PAIS-ORIGEN");
+        for(Object it:columnas){
+            tabla.addColumn(it);
+        }
+        jTableLab.setModel(tabla);
+    }
+    
+    private void llenarTabla(){
+        borrarFilas();
+        for(Laboratorio a:ld.traerTodoLaboratorio()){
+            tabla.addRow(new Object[]{a.getIdLaboratorio(), a.getNombre(), a.getDireccion(), a.getPaisOrigen()});
+        }
+    }
+    
+    private void limpiar(){
+        jtId.setText("");
+        jtfNombre.setText("");
+        jcbPais.setSelectedIndex(0);
+        jtfDire.setText("");
+    }
+    
+    private void borrarFilas(){
+        int a = tabla.getRowCount()-1;
+        for(int i = a; i>=0; i--){
+            tabla.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLab;
+    private javax.swing.JButton jbActualizar;
     private javax.swing.JComboBox<String> jcbPais;
+    private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtfDire;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JButton jtfRegistrar;

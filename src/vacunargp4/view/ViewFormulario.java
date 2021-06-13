@@ -739,11 +739,11 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                 
                 if(jcxNo.isSelected()){
                     Persona per2 = new Persona(id, dni, nombre, apellido, altura, peso, fechain, telefono, email, trabajo, departamento, ciudad, ac);
+                    System.out.println(per2);
                     pd.ActualizarPerSinPato(per2);
                 }else{
                     Patologia pat1 = (Patologia) jcbPatologia.getSelectedItem();
                     Persona per = new Persona(id, dni, pat1, nombre, apellido, altura, peso, fechain, telefono, email, trabajo, departamento, ciudad, ac);
-                    System.out.println(per);
                     pd.ActualizarPerConPato(per);
                 }
             }catch(NumberFormatException nb){

@@ -259,7 +259,6 @@ public class PersonaData {
             ps.setString(11, persona.getCiudad());
             ps.setBoolean(12, persona.isActivo());
             ps.setInt(13, persona.getIdPersona());
-            
             if(ps.executeUpdate() == 1){
                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
             }else{
