@@ -6,6 +6,7 @@
 package vacunargp4.view;
 
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -111,6 +112,12 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jLAltura.setText("Altura(En Metros):");
 
         jLPeso.setText("Peso:");
+
+        jtfPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPesoActionPerformed(evt);
+            }
+        });
 
         jLFecha.setText("Fecha de Nacimiento:");
 
@@ -455,7 +462,18 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+    public void jdcFechaMinMax(){
+    try {
+	  String sDate1="01/01/1911";  
+          Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);  
 
+	} catch (ParseException e) {
+	}
+    
+    if(jdcFecha.getDate() > date1){
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha comprendida entre la fecha actual y ciento diez (110) años en el pasado");
+    }
+}
     private void jBEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnviarActionPerformed
         // no haya campos vacios
         if(jtfNombre.getText().equals("") || jtfApellido.getText().equals("") || jtfDNI.getText().equals("") || jtfAltura.getText().equals("") || jtfPeso.getText().equals("") || jtfEmail1.getText().equals("") || jtfCelular.getText().equals("") || jcbTrabajo.getSelectedItem().equals("")){
@@ -791,6 +809,10 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
     private void jtfCelularFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCelularFocusGained
 
     }//GEN-LAST:event_jtfCelularFocusGained
+
+    private void jtfPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPesoActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
