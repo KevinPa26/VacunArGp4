@@ -78,6 +78,12 @@ public class ViewInscripcion extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Dni:");
 
+        jtfDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfDniActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Nombre:");
 
         jLabel4.setText("Apellido:");
@@ -164,7 +170,7 @@ public class ViewInscripcion extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jcbVacLejos, 0, 249, Short.MAX_VALUE))
+                        .addComponent(jcbVacLejos, 0, 252, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -277,8 +283,14 @@ public class ViewInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbNoActionPerformed
 
     private void jbSoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSoliActionPerformed
-        
+        if(jtfDni.getText().equals("") || jtfNombre.getText().equals("") || jtfApellido.getText().equals("") || jtfPatologia.getText().equals("") || jtfTrabajo.getText().equals("") || jcbVacunacion.getSelectedItem() == null || jcbVacunacionDpto.getSelectedItem() == null || jcbVacLejos.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+        }
     }//GEN-LAST:event_jbSoliActionPerformed
+
+    private void jtfDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfDniActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,7 @@
 package vacunargp4.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vacunargp4.control.LaboratorioData;
 import vacunargp4.modelo.Laboratorio;
@@ -178,12 +179,17 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfRegistrarActionPerformed
+        if(jtfNombre.getText().equals("")|| jcbPais.getSelectedItem() == null || jtfDire.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+        }else{
+        
         String n = jtfNombre.getText();
         String p = jcbPais.getSelectedItem().toString();
         String d = jtfDire.getText();
         Laboratorio lab = new Laboratorio(n, d, p);
         ld.crearLaboratorio(lab);
         llenarTabla();
+        }
     }//GEN-LAST:event_jtfRegistrarActionPerformed
 
     private void jTableLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLabMouseClicked
@@ -212,6 +218,10 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         // TODO add your handling code here:
+        if(jtfNombre.getText().equals("")|| jcbPais.getSelectedItem() == null || jtfDire.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+        }else{
+        
         int id = Integer.parseInt(jtId.getText());
         String nom = jtfNombre.getText();
         String pais = jcbPais.getSelectedItem().toString();
@@ -224,6 +234,7 @@ public class ViewLaboratorio extends javax.swing.JInternalFrame {
         ld.ActualizarLab(labElegido);
         limpiar();
         llenarTabla();
+      }
     }//GEN-LAST:event_jbActualizarActionPerformed
     
     private void armarCabecera(){

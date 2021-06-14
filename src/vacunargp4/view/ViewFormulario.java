@@ -462,7 +462,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
-    public void jdcFechaMinMax(){
+    public void jdcFechaMin(){
     try {
 	  String sDate1="01/01/1911";  
           Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);  

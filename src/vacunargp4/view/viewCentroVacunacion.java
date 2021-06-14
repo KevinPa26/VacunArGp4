@@ -7,6 +7,7 @@ package vacunargp4.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vacunargp4.modelo.*;
 import vacunargp4.control.*;
@@ -271,12 +272,16 @@ public class viewCentroVacunacion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcbDepartamentoActionPerformed
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
-        String ciudad = (String)jcbCiudad.getSelectedItem();
+        if(jtfNombre.getText().equals("") || jcbDepartamento.getSelectedItem() == null || jcbCiudad.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+        } else{
+            String ciudad = (String)jcbCiudad.getSelectedItem();
         String dep = (String)jcbDepartamento.getSelectedItem();
         String nombre = jtfNombre.getText();
         Vacunatorio vac = new Vacunatorio(nombre, dep, nombre);
         vd.crearVacunatorio(vac);
         llenarTabla();
+        } 
     }//GEN-LAST:event_jbRegistrarActionPerformed
     
     private void armarCabecera(){

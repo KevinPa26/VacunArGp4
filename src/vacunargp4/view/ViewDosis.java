@@ -150,6 +150,10 @@ public class ViewDosis extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
+        if(jtCantidad.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Complete los campos");
+        }else{
+        
         try {
             Laboratorio lab = (Laboratorio)jcbLab.getSelectedItem();
             int nSerie = Integer.parseInt(jtNumSerie.getText());
@@ -164,6 +168,7 @@ public class ViewDosis extends javax.swing.JInternalFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese solo numeros.");
         }
+            }
     }//GEN-LAST:event_jbRegistrarActionPerformed
     
     private void armarCabecera(){
