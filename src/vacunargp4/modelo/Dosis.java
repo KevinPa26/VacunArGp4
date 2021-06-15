@@ -72,6 +72,6 @@ public class Dosis {
 
     @Override
     public String toString() {
-        return "Dosis{" + "idDosis=" + idDosis + ", lab=" + lab + ", numSerie=" + numSerie + ", estado=" + estado + '}';
+        return "Lab: "+lab+ "numSerie=" + numSerie;
     }
 }

@@ -387,4 +387,34 @@ public class CitaVacunacionData {
         }
         return citas;
     }
+    
+    public void actualizarCitaSinDosis(int id, String estado){
+        try {
+            String sql = "UPDATE cita_vacunacion SET estado = ? WHERE idCita = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, estado);
+            ps.setInt(2, id);
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar la cita");
+        }
+    }
+    
+    public void actualizarCitaConDosis(int id, Dosis d){
+        try {
+            String sql = "UPDATE cita_vacunacion SET estado = 'Cumplida' ,idDosis = ? WHERE idCita = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, d.getIdDosis());
+            ps.setInt(2, id);
+            if(ps.executeUpdate() == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar la cita");
+        }
+    }
 }

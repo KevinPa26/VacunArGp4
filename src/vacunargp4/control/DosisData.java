@@ -187,4 +187,16 @@ public class DosisData {
         }
         return a;
     }
+    
+    public void bajaDosis(int id){
+        try {
+            String sql = "UPDATE dosis SET estado = false WHERE idDosis = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DosisData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

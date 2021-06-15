@@ -8,8 +8,10 @@ package vacunargp4.view;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vacunargp4.control.*;
 import vacunargp4.modelo.*;
@@ -21,16 +23,21 @@ import vacunargp4.modelo.*;
 public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
     
     CitaVacunacionData cvd;
+    DosisData dd;
+    PersonaData pd;
     private DefaultTableModel tabla;
     private CitaVacunacion citaElegida;
+    private Dosis dosis1;
     
 
     /**
      * Creates new form ViewCitaAplicacion
      */
-    public ViewCitaAplicacion(CitaVacunacionData cvd) {
+    public ViewCitaAplicacion(CitaVacunacionData cvd, DosisData dd, PersonaData pd) {
         initComponents();
         this.cvd = cvd;
+        this.dd = dd;
+        this.pd = pd;
         tabla = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column){
@@ -39,6 +46,7 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
         };
         armarCabecera();
         llenarTabla();
+        llenarDosis();
         jdcFecha.setDate(Date.valueOf(LocalDate.now()));
     }
 
@@ -59,22 +67,22 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtDni = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtVacunatorio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jtCantDosis = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jcbEstado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbDosis = new javax.swing.JComboBox<>();
 
         jLabel1.setText("CITA - APLICAR DOSIS");
 
@@ -89,6 +97,11 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCitasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableCitas);
 
         jbBuscarFecha.setText("BUSCAR");
@@ -102,37 +115,45 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
 
         jLabel3.setText("NOMBRE:");
 
-        jTextField1.setEditable(false);
+        jtNombre.setEditable(false);
 
         jLabel4.setText("APELLIDO:");
 
-        jTextField2.setEditable(false);
+        jtApellido.setEditable(false);
 
         jLabel5.setText("DNI:");
 
-        jTextField3.setEditable(false);
+        jtDni.setEditable(false);
 
         jLabel6.setText("VACUNATORIO:");
 
-        jTextField4.setEditable(false);
+        jtVacunatorio.setEditable(false);
 
         jLabel7.setText("ESTADO DE CITA:");
 
         jLabel8.setText("CANT-DOSIS:");
 
-        jTextField6.setEditable(false);
+        jtCantDosis.setEditable(false);
 
         jButton1.setText("ACTUALIZAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("LIMPIAR");
+        jbLimpiar.setText("LIMPIAR");
 
-        jButton3.setText("SALIR");
+        jbSalir.setText("SALIR");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espera", "Vencida", "Cancelada", "Cumplida" }));
 
         jLabel9.setText("DOSIS:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,46 +176,45 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4))
-                            .addComponent(jButton1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcbDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtCantDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel4))
+                                    .addComponent(jButton1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(116, 116, 116)
+                                        .addComponent(jbLimpiar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbSalir)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(196, 196, 196))
+                                .addComponent(jtVacunatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,26 +233,26 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtVacunatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtCantDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                    .addComponent(jcbDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jbLimpiar)
+                    .addComponent(jbSalir))
                 .addContainerGap())
         );
 
@@ -246,6 +266,79 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
         LocalDate fechaCita = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         llenarTablaFecha(fechaCita);
     }//GEN-LAST:event_jbBuscarFechaActionPerformed
+
+    private void jTableCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCitasMouseClicked
+        // TODO add your handling code here:
+        int numCita = jTableCitas.getSelectedRow();
+        
+        if(numCita != -1){
+            citaElegida = new CitaVacunacion();
+            citaElegida.setIdCita((Integer)jTableCitas.getValueAt(numCita, 0));
+            citaElegida.setPersona((Persona)jTableCitas.getValueAt(numCita, 1));
+            citaElegida.setVacunatorio((Vacunatorio)jTableCitas.getValueAt(numCita, 2));
+            citaElegida.setDosis((Dosis)jTableCitas.getValueAt(numCita, 3));
+            citaElegida.setFecha((LocalDate)jTableCitas.getValueAt(numCita, 4));
+            citaElegida.setHora((LocalTime)jTableCitas.getValueAt(numCita, 5));
+            citaElegida.setEstado((String)jTableCitas.getValueAt(numCita, 6));
+            citaElegida.setCantDosis((String)jTableCitas.getValueAt(numCita, 7));
+            
+            jtNombre.setText(citaElegida.getPersona().getNombre());
+            jtApellido.setText(citaElegida.getPersona().getApellido());
+            jtDni.setText(String.valueOf(citaElegida.getPersona().getDni()));
+            jtVacunatorio.setText(citaElegida.getVacunatorio().getNombre());
+            jtCantDosis.setText(citaElegida.getCantDosis());
+        }
+    }//GEN-LAST:event_jTableCitasMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String est = (String)jcbEstado.getSelectedItem();
+        Dosis dosi = (Dosis)jcbDosis.getSelectedItem();
+        
+        switch((String)jcbEstado.getSelectedItem()){
+            case "Espera":{
+                JOptionPane.showMessageDialog(this, "Debe cambiar el estado de la cita.");
+                break;
+            }
+            case "Vencida":{
+                if(jcbDosis.getSelectedItem() != null){
+                    JOptionPane.showMessageDialog(this, "No puede asignar dosis en este estado de cita.");
+                }else{
+                    cvd.actualizarCitaSinDosis(citaElegida.getIdCita(), est);
+                }
+                break;
+            }
+            case "Cancelada":{
+                if(jcbDosis.getSelectedItem() != null){
+                    JOptionPane.showMessageDialog(this, "No puede asignar dosis en este estado de cita.");
+                }else{
+                    cvd.actualizarCitaSinDosis(citaElegida.getIdCita(), est);
+                }
+                break;
+            }
+            case "Cumplida":{
+                if(jcbDosis.getSelectedItem() != null && "Primera".equals(jtCantDosis.getText())){
+                    cvd.actualizarCitaConDosis(citaElegida.getIdCita(), dosi);
+                    dd.bajaDosis(dosi.getIdDosis());
+                    LocalDate nueva = citaElegida.getFecha().plusDays(28);
+                    CitaVacunacion newCita = new CitaVacunacion((Persona)citaElegida.getPersona(), (Vacunatorio)citaElegida.getVacunatorio(), nueva, (LocalTime)citaElegida.getHora(), "Espera", "Segunda");
+                    cvd.crearCitaVacunacion(newCita);
+                }else if(jcbDosis.getSelectedItem() != null && "Segunda".equals(jtCantDosis.getText())){
+                    cvd.actualizarCitaConDosis(citaElegida.getIdCita(), dosi);
+                    pd.bajaPersona(citaElegida.getPersona().getIdPersona());
+                    dd.bajaDosis(dosi.getIdDosis());
+                }else{
+                    System.out.println("Seleccione una dosis");
+                }
+            }
+        }
+        llenarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     
     private void armarCabecera(){
@@ -284,11 +377,16 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
             tabla.removeRow(i);
         }
     }
+    
+    private void llenarDosis(){
+        jcbDosis.removeAllItems();
+        jcbDosis.addItem(dosis1);
+        for(Dosis d:dd.traerDosisEstado(true)){
+            jcbDosis.addItem(d);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -301,13 +399,16 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableCitas;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JButton jbBuscarFecha;
+    private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<Dosis> jcbDosis;
     private javax.swing.JComboBox<String> jcbEstado;
     private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtCantDosis;
+    private javax.swing.JTextField jtDni;
+    private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtVacunatorio;
     // End of variables declaration//GEN-END:variables
 }

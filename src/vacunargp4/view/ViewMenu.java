@@ -209,7 +209,7 @@ public class ViewMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        ViewCitaAplicacion  ca= new ViewCitaAplicacion(cvd);
+        ViewCitaAplicacion  ca= new ViewCitaAplicacion(cvd, dd, pd);
         ca.setVisible(true);
         escritorio.add(ca);
         escritorio.moveToFront(ca);
