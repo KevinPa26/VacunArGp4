@@ -8,6 +8,7 @@ package vacunargp4.view;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vacunargp4.control.*;
 import vacunargp4.modelo.*;
@@ -60,30 +61,30 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePersonas = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLTitleVacunatorio = new javax.swing.JLabel();
+        jLDepartamento = new javax.swing.JLabel();
         jcbDepartamento = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        jLCiudad = new javax.swing.JLabel();
         jcbCiudad = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        jLVacunatorio = new javax.swing.JLabel();
         jcbVacunatorio = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        jLSelAuto = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        jLTitleFecha = new javax.swing.JLabel();
+        jLFecha = new javax.swing.JLabel();
         jdcFecha = new com.toedter.calendar.JDateChooser();
-        jLabel9 = new javax.swing.JLabel();
+        jLHora = new javax.swing.JLabel();
         jSliderHora = new javax.swing.JSlider();
-        jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
-        jlHora = new javax.swing.JLabel();
+        jLHoraShow = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLTitleEst = new javax.swing.JLabel();
+        jLEstado = new javax.swing.JLabel();
         jcbEstado = new javax.swing.JComboBox<>();
+        jLCantDosis = new javax.swing.JLabel();
         jcbCantDosis = new javax.swing.JComboBox<>();
+        jBCrear = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -107,9 +108,9 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTablePersonas);
 
-        jLabel2.setText("VACUNATORIO");
+        jLTitleVacunatorio.setText("VACUNATORIO");
 
-        jLabel3.setText("DEPARTAMENTO:");
+        jLDepartamento.setText("DEPARTAMENTO:");
 
         jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Ayacucho", "Belgrano", "Chacabuco", "Coronel Pringles", "General Pedernera", "Gobernador Dupuy", "Junín", "Pueyrredón", "Libertador General San Martín" }));
         jcbDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +119,7 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("CIUDAD:");
+        jLCiudad.setText("CIUDAD:");
 
         jcbCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,13 +127,18 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("VACUNATORIO:");
+        jLVacunatorio.setText("VACUNATORIO:");
 
-        jLabel6.setText("(Selección automática)");
+        jLSelAuto.setText("(Selección automática)");
 
-        jLabel8.setText("FECHA:");
+        jLTitleFecha.setText("FECHA Y HORA");
 
-        jLabel9.setText("HORA:");
+        jLFecha.setText("FECHA:");
+
+        jdcFecha.setMaxSelectableDate(new java.util.Date(1672527600000L));
+        jdcFecha.setMinSelectableDate(new java.util.Date(1609498800000L));
+
+        jLHora.setText("HORA:");
 
         jSliderHora.setMajorTickSpacing(1);
         jSliderHora.setMaximum(20);
@@ -145,30 +151,43 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel10.setText("FECHA Y HORA");
+        jLHoraShow.setText("8:00");
 
-        jButton1.setText("CREAR");
+        jLTitleEst.setText("ESTADO");
 
-        jButton2.setText("LIMPIAR");
+        jLEstado.setText("ESTADO DE CITA:");
 
-        jbSalir.setText("SALIR");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espera" }));
+        jcbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
+                jcbEstadoActionPerformed(evt);
             }
         });
 
-        jlHora.setText("8:00");
-
-        jLabel11.setText("ESTADO");
-
-        jLabel12.setText("ESTADO DE CITA:");
-
-        jLabel13.setText("DOSIS:");
-
-        jcbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Espera" }));
+        jLCantDosis.setText("DOSIS:");
 
         jcbCantDosis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Primera", "Segunda" }));
+
+        jBCrear.setText("CREAR");
+        jBCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCrearActionPerformed(evt);
+            }
+        });
+
+        jBLimpiar.setText("LIMPIAR");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+
+        jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,7 +195,7 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11)
+                .addComponent(jLTitleEst)
                 .addGap(433, 433, 433))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -194,57 +213,57 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLDepartamento)
+                                    .addComponent(jLCiudad)
+                                    .addComponent(jLVacunatorio))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jcbDepartamento, 0, 190, Short.MAX_VALUE)
                                     .addComponent(jcbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jcbVacunatorio, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(36, 36, 36)
-                                .addComponent(jLabel6)
+                                .addComponent(jLSelAuto)
                                 .addGap(216, 216, 216))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(377, 377, 377))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(jLTitleVacunatorio)
                                 .addGap(415, 415, 415))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jLTitleFecha)
                                 .addGap(413, 413, 413))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(jLFecha)
                                 .addGap(58, 58, 58)
                                 .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(jLabel9)
+                                .addComponent(jLHora)
                                 .addGap(18, 18, 18)
-                                .addComponent(jlHora, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLHoraShow, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSliderHora, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(217, 217, 217))))
+                                .addComponent(jSliderHora, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(140, 140, 140))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jSeparator3)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(261, 261, 261)
-                .addComponent(jLabel12)
+                .addComponent(jLEstado)
                 .addGap(18, 18, 18)
                 .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
-                .addComponent(jLabel13)
+                .addComponent(jLCantDosis)
                 .addGap(18, 18, 18)
                 .addComponent(jcbCantDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(200, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(231, 231, 231)
-                .addComponent(jButton1)
+                .addComponent(jBCrear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBLimpiar)
                 .addGap(167, 167, 167)
-                .addComponent(jbSalir)
+                .addComponent(jBSalir)
                 .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
@@ -257,51 +276,48 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLTitleVacunatorio)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLDepartamento)
                     .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLCiudad)
                     .addComponent(jcbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jLVacunatorio)
                     .addComponent(jcbVacunatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLSelAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(jlHora))
-                            .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jSliderHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
+                .addComponent(jLTitleFecha)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLHora)
+                            .addComponent(jLHoraShow))
+                        .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLFecha))
+                    .addComponent(jSliderHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
+                .addComponent(jLTitleEst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
+                    .addComponent(jLEstado)
+                    .addComponent(jLCantDosis)
                     .addComponent(jcbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbCantDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jbSalir)
-                    .addComponent(jButton2))
+                    .addComponent(jBCrear)
+                    .addComponent(jBSalir)
+                    .addComponent(jBLimpiar))
                 .addGap(19, 19, 19))
         );
 
@@ -458,13 +474,30 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
 
     private void jSliderHoraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderHoraStateChanged
         // TODO add your handling code here:
-        jlHora.setText(jSliderHora.getValue()+":00");
+        jLHoraShow.setText(jSliderHora.getValue()+":00");
     }//GEN-LAST:event_jSliderHoraStateChanged
 
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jbSalirActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jcbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbEstadoActionPerformed
+
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        jcbDepartamento.setSelectedItem(null);
+        jcbCiudad.setSelectedItem(null);
+        jcbVacunatorio.setSelectedItem(null);
+        jdcFecha.setDate(null);
+    }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void jBCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearActionPerformed
+        if(jcbDepartamento.getSelectedItem() == null || jcbCiudad.getSelectedItem() == null || jdcFecha.getDate() == null){
+            JOptionPane.showMessageDialog(this, "Hay campos sin completar");
+        }
+    }//GEN-LAST:event_jBCrearActionPerformed
     
     private void armarCabecera(){
         ArrayList<Object> columnas = new ArrayList<>();
@@ -517,21 +550,23 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBCrear;
+    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBSalir;
+    private javax.swing.JLabel jLCantDosis;
+    private javax.swing.JLabel jLCiudad;
+    private javax.swing.JLabel jLDepartamento;
+    private javax.swing.JLabel jLEstado;
+    private javax.swing.JLabel jLFecha;
+    private javax.swing.JLabel jLHora;
+    private javax.swing.JLabel jLHoraShow;
+    private javax.swing.JLabel jLSelAuto;
+    private javax.swing.JLabel jLTitleEst;
+    private javax.swing.JLabel jLTitleFecha;
+    private javax.swing.JLabel jLTitleVacunatorio;
+    private javax.swing.JLabel jLVacunatorio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -539,13 +574,11 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
     private javax.swing.JSlider jSliderHora;
     private com.toedter.components.JSpinField jSpinField1;
     private javax.swing.JTable jTablePersonas;
-    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<String> jcbCantDosis;
     private javax.swing.JComboBox<String> jcbCiudad;
     private javax.swing.JComboBox<String> jcbDepartamento;
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<Vacunatorio> jcbVacunatorio;
     private com.toedter.calendar.JDateChooser jdcFecha;
-    private javax.swing.JLabel jlHora;
     // End of variables declaration//GEN-END:variables
 }

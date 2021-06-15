@@ -121,6 +121,9 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
 
         jLFecha.setText("Fecha de Nacimiento:");
 
+        jdcFecha.setMaxSelectableDate(new java.util.Date(1672484400000L));
+        jdcFecha.setMinSelectableDate(new java.util.Date(-1861880400000L));
+
         jLEmail.setText("Email:");
 
         jtfEmail1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -331,12 +334,10 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                                         .addComponent(jcxNoB)
                                         .addGap(47, 47, 47))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jlDNI)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jlDNI)
+                                            .addComponent(jLFecha)
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jlActivo)
                                                     .addComponent(jLTrabajo)
@@ -358,7 +359,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(jtfEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLCuantas)
@@ -462,18 +463,6 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
-    public void jdcFechaMin(){
-    try {
-	  String sDate1="01/01/1911";  
-          Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);  
-
-	} catch (ParseException e) {
-	}
-    
-    if(jdcFecha.getDate() > date1){
-        JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha comprendida entre la fecha actual y ciento diez (110) años en el pasado");
-    }
-}
     private void jBEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnviarActionPerformed
         // no haya campos vacios
         if(jtfNombre.getText().equals("") || jtfApellido.getText().equals("") || jtfDNI.getText().equals("") || jtfAltura.getText().equals("") || jtfPeso.getText().equals("") || jtfEmail1.getText().equals("") || jtfCelular.getText().equals("") || jcbTrabajo.getSelectedItem().equals("")){
