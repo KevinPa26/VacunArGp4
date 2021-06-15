@@ -5,6 +5,7 @@
  */
 package vacunargp4;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import vacunargp4.control.*;
@@ -38,6 +39,8 @@ public class VacunArGp4 {
         Laboratorio la1 = new Laboratorio("AstraZeneca","Oxford","Reino unido");
         Vacunatorio v1 = new Vacunatorio("HOSPITAL MARIA J. BECKER","Pueyrredón","La Punta");
         Patologia pat = new Patologia("Enfermedad prueba2");
+        
+        Date as = new Date(121,5,23);
  
         
           //AgregarPatologia
@@ -107,10 +110,5 @@ public class VacunArGp4 {
 //        for(CitaVacunacion c: cd.traerTodoCitaVacunacion()){
 //            System.out.println(c);
 //        }
-
-    for(CitaVacunacion cv:cd.traerCitaVacunacionIdPersona(10)){
-        System.out.println(cv);
     }
-    }
-    
 }

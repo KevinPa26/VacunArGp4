@@ -92,6 +92,11 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu2.add(jmiCrearCita);
 
         jmiEstado.setText("Modificar Cita");
+        jmiEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEstadoActionPerformed(evt);
+            }
+        });
         jMenu2.add(jmiEstado);
 
         jMenuBar1.add(jMenu2);
@@ -199,6 +204,16 @@ public class ViewMenu extends javax.swing.JFrame {
         escritorio.add(vd);
         escritorio.moveToFront(vd);
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jmiEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstadoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewCitaAplicacion  ca= new ViewCitaAplicacion(cvd);
+        ca.setVisible(true);
+        escritorio.add(ca);
+        escritorio.moveToFront(ca);
+    }//GEN-LAST:event_jmiEstadoActionPerformed
 
     /**
      * @param args the command line arguments

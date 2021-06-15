@@ -208,7 +208,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", dni=" + dni + ", patologia=" + patologia + ", nombre=" + nombre + ", apellido=" + apellido + ", altura=" + altura + ", peso=" + peso + ", fechaNac=" + fechaNac + ", celular=" + celular + ", email=" + email + ", trabajo=" + trabajo + ", departamento=" + departamento + ", ciudad=" + ciudad + ", activo=" + activo + '}';
+        return nombre +" "+apellido;
     }
 
     

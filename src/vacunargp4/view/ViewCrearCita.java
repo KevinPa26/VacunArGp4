@@ -6,7 +6,10 @@
 package vacunargp4.view;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -327,7 +330,7 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
     private void jcbDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDepartamentoActionPerformed
         // TODO add your handling code here:
         jcbCiudad.removeAllItems();
-        switch(jcbDepartamento.getSelectedItem().toString()){
+        switch((String)jcbDepartamento.getSelectedItem()){
             case "Pueyrredón":{
                 jcbCiudad.addItem("San Luis (capital provincial)");
                 jcbCiudad.addItem("Alto Pencoso");
@@ -438,11 +441,13 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
                 break;
             }
         }
-        llenarVacunatoriosDep(jcbDepartamento.getSelectedItem().toString());
+        llenarVacunatoriosDep((String)jcbDepartamento.getSelectedItem());
+        llenarVacunatoriosCiudad((String)jcbCiudad.getSelectedItem());
     }//GEN-LAST:event_jcbDepartamentoActionPerformed
 
     private void jcbCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCiudadActionPerformed
         // TODO add your handling code here:
+        llenarVacunatoriosCiudad((String)jcbCiudad.getSelectedItem());
     }//GEN-LAST:event_jcbCiudadActionPerformed
 
     private void jTablePersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePersonasMouseClicked
@@ -497,6 +502,17 @@ public class ViewCrearCita extends javax.swing.JInternalFrame {
         if(jcbDepartamento.getSelectedItem() == null || jcbCiudad.getSelectedItem() == null || jdcFecha.getDate() == null){
             JOptionPane.showMessageDialog(this, "Hay campos sin completar");
         }
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha = formato.format(jdcFecha.getDate());
+        LocalDate fechaCita = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        Vacunatorio vacu = (Vacunatorio)jcbVacunatorio.getSelectedItem();
+        LocalTime hora = LocalTime.parse(jLHoraShow.getText());
+        String estado = (String)jcbEstado.getSelectedItem();
+        String cantDosis = (String)jcbCantDosis.getSelectedItem();
+        
+        CitaVacunacion cita = new CitaVacunacion(personaElegida, vacu, fechaCita, hora, estado, cantDosis);
+        cvd.crearCitaVacunacion(cita);
     }//GEN-LAST:event_jBCrearActionPerformed
     
     private void armarCabecera(){

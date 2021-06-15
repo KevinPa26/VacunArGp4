@@ -40,7 +40,7 @@ public class CitaVacunacionData {
     
     public void crearCitaVacunacion(CitaVacunacion cv){
         try {
-            String sql = "INSERT INTO cita_vacunacion(idPersona, idVacunatorio, fecha, hora, estado, dosis) VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO cita_vacunacion(idPersona, idVacunatorio, fecha, hora, estado, cant_Dosis) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, cv.getPersona().getIdPersona());
             ps.setInt(2, cv.getVacunatorio().getIdVacunatorio());
@@ -331,5 +331,60 @@ public class CitaVacunacionData {
             }
         }
         return cual;
+    }
+    
+    public List<CitaVacunacion> traerCitaEsperaFecha(LocalDate fecha){
+        List<CitaVacunacion> citas = new ArrayList<>();
+        CitaVacunacion cv = null;
+        try {
+            String sql = "SELECT * FROM cita_vacunacion c WHERE c.estado = 'Espera' AND c.fecha = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setDate(1, Date.valueOf(fecha));
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                cv = new CitaVacunacion();
+                cv.setIdCita(rs.getInt(1));
+                cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
+                cv.setVacunatorio(vd.buscarVacunatorioId(rs.getInt(3)));
+                cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
+                cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
+                cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
+                citas.add(cv);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar la cita de vacunacion");
+        }
+        return citas;
+    }
+    
+    public List<CitaVacunacion> traerCitaEspera(){
+        List<CitaVacunacion> citas = new ArrayList<>();
+        CitaVacunacion cv = null;
+        try {
+            String sql = "SELECT * FROM cita_vacunacion c WHERE c.estado = 'Espera'";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                cv = new CitaVacunacion();
+                cv.setIdCita(rs.getInt(1));
+                cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
+                cv.setVacunatorio(vd.buscarVacunatorioId(rs.getInt(3)));
+                cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
+                cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
+                cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
+                citas.add(cv);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar la cita de vacunacion");
+        }
+        return citas;
     }
 }
