@@ -123,6 +123,54 @@ public class VacunatorioData {
         return vacs;
     }
     
+    public List<Vacunatorio> traerTodoVacunatorioDep(String dep){
+        List<Vacunatorio> vacs = new ArrayList<>();
+        Vacunatorio vac = null;
+        try {
+            String sql = "SELECT * FROM vacunatorio WHERE departamento = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, dep);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                vac = new Vacunatorio();
+                vac.setIdVacunatorio(rs.getInt(1));
+                vac.setNombre(rs.getString(2));
+                vac.setDepartamento(rs.getString(3));
+                vac.setCiudad(rs.getString(4));
+                vacs.add(vac);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al traer todos los vacunatorios");
+        }
+        return vacs;
+    }
+    
+    public List<Vacunatorio> traerTodoVacunatorioCiudad(String ciu){
+        List<Vacunatorio> vacs = new ArrayList<>();
+        Vacunatorio vac = null;
+        try {
+            String sql = "SELECT * FROM vacunatorio WHERE ciudad = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, ciu);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                vac = new Vacunatorio();
+                vac.setIdVacunatorio(rs.getInt(1));
+                vac.setNombre(rs.getString(2));
+                vac.setDepartamento(rs.getString(3));
+                vac.setCiudad(rs.getString(4));
+                vacs.add(vac);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al traer todos los vacunatorios");
+        }
+        return vacs;
+    }
+    
     private boolean verificar(Vacunatorio a){
         boolean e = false;
         for(Vacunatorio c:traerTodoVacunatorio()){

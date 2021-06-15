@@ -100,8 +100,8 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
             }else{
                 JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
@@ -113,14 +113,15 @@ public class CitaVacunacionData {
         return cv;
     }
     
-    public CitaVacunacion buscarCitaVacunacionIdPersona(int id){
+    public List<CitaVacunacion> traerCitaVacunacionIdPersona(int id){
+        List<CitaVacunacion> citas = new ArrayList<>();
         CitaVacunacion cv = null;
         try {
             String sql = "SELECT * FROM cita_vacunacion WHERE idPersona = ?";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -128,17 +129,16 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
+                citas.add(cv);
             }
             rs.close();
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar la cita de vacunacion");
         }
-        return cv;
+        return citas;
     }
     
     public List<CitaVacunacion> traerCitaVacunacionIdVacunatorio(int id){
@@ -149,7 +149,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -157,11 +157,9 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -179,7 +177,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(fecha));
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -187,11 +185,9 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -209,7 +205,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setTime(1, Time.valueOf(hora));
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -217,11 +213,9 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -239,7 +233,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, estado);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -247,11 +241,9 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -269,7 +261,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, can);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -277,11 +269,9 @@ public class CitaVacunacionData {
                 cv.setDosis(dd.buscarDosisId(rs.getInt(4)));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -298,7 +288,7 @@ public class CitaVacunacionData {
             String sql = "SELECT * FROM cita_vacunacion";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 cv = new CitaVacunacion();
                 cv.setIdCita(rs.getInt(1));
                 cv.setPersona(pd.buscarPersonaId(rs.getInt(2)));
@@ -307,11 +297,9 @@ public class CitaVacunacionData {
                 System.out.println(rs.getInt(4));
                 cv.setFecha(LocalDate.parse(String.valueOf(rs.getDate(5))));
                 cv.setHora(LocalTime.parse(String.valueOf(rs.getTime(6))));
-                cv.setEstado(rs.getString(6));
-                cv.setCantDosis(rs.getString(7));
+                cv.setEstado(rs.getString(7));
+                cv.setCantDosis(rs.getString(8));
                 citas.add(cv);
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la cita de vacunacion");
             }
             rs.close();
             ps.close();
@@ -319,5 +307,29 @@ public class CitaVacunacionData {
             JOptionPane.showMessageDialog(null, "Error al buscar la cita de vacunacion");
         }
         return citas;
+    }
+    
+    public String cualCorresponde(int id){
+        String cual = "Primera";
+        for(CitaVacunacion cv:traerCitaVacunacionIdPersona(id)){
+            switch(cv.getCantDosis()){
+                case "Primera":{
+                    if(cv.getEstado() == "Cumplida"){
+                        cual = "Segunda";
+                    }else{
+                        cual = "Primera";
+                    }
+                    break;
+                }
+                case "Segunda":{
+                    if(cv.getCantDosis() == "Cumplida"){
+                        cual = "Ninguna";
+                    }else{
+                        cual = "Segunda";
+                    }
+                }
+            }
+        }
+        return cual;
     }
 }

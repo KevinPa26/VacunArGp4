@@ -48,17 +48,17 @@
             <Property name="text" type="java.lang.String" value="Citas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiPedir">
+            <MenuItem class="javax.swing.JMenuItem" name="jmiCrearCita">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pedir una Cita"/>
+                <Property name="text" type="java.lang.String" value="Crear Cita"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiPedirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiCrearCitaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiEstado">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Estado de mi Cita"/>
+                <Property name="text" type="java.lang.String" value="Modificar Cita"/>
               </Properties>
             </MenuItem>
           </SubComponents>

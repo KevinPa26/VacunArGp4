@@ -18,6 +18,7 @@ public class ViewMenu extends javax.swing.JFrame {
     VacunatorioData vd = new VacunatorioData(con);
     LaboratorioData ld = new LaboratorioData(con);
     DosisData dd = new DosisData(con);
+    CitaVacunacionData cvd = new CitaVacunacionData(con);
     
     public ViewMenu() {
         initComponents();
@@ -41,7 +42,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jmPersonas = new javax.swing.JMenu();
         jmiFormulario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jmiPedir = new javax.swing.JMenuItem();
+        jmiCrearCita = new javax.swing.JMenuItem();
         jmiEstado = new javax.swing.JMenuItem();
         jmCentro = new javax.swing.JMenu();
         jmLaboratorio = new javax.swing.JMenu();
@@ -82,15 +83,15 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu2.setText("Citas");
 
-        jmiPedir.setText("Pedir una Cita");
-        jmiPedir.addActionListener(new java.awt.event.ActionListener() {
+        jmiCrearCita.setText("Crear Cita");
+        jmiCrearCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiPedirActionPerformed(evt);
+                jmiCrearCitaActionPerformed(evt);
             }
         });
-        jMenu2.add(jmiPedir);
+        jMenu2.add(jmiCrearCita);
 
-        jmiEstado.setText("Estado de mi Cita");
+        jmiEstado.setText("Modificar Cita");
         jMenu2.add(jmiEstado);
 
         jMenuBar1.add(jMenu2);
@@ -155,14 +156,14 @@ public class ViewMenu extends javax.swing.JFrame {
         escritorio.moveToFront(vf);
     }//GEN-LAST:event_jmiFormularioActionPerformed
 
-    private void jmiPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPedirActionPerformed
+    private void jmiCrearCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCrearCitaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        ViewInscripcion vi = new ViewInscripcion(pd,vd);
-        vi.setVisible(true);
-        escritorio.add(vi);
-        escritorio.moveToFront(vi);
-    }//GEN-LAST:event_jmiPedirActionPerformed
+        ViewCrearCita vcc = new ViewCrearCita(cvd,dd,vd,pd);
+        vcc.setVisible(true);
+        escritorio.add(vcc);
+        escritorio.moveToFront(vcc);
+    }//GEN-LAST:event_jmiCrearCitaActionPerformed
 
     private void jmCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCentroActionPerformed
         
@@ -246,8 +247,8 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jmCentro;
     private javax.swing.JMenu jmLaboratorio;
     private javax.swing.JMenu jmPersonas;
+    private javax.swing.JMenuItem jmiCrearCita;
     private javax.swing.JMenuItem jmiEstado;
     private javax.swing.JMenuItem jmiFormulario;
-    private javax.swing.JMenuItem jmiPedir;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,7 @@ public class VacunArGp4 {
  
         
           //AgregarPatologia
-        pad.crearPatologia(pat);
+        //pad.crearPatologia(pat);
         //Agregar una persona.
 //        pd.crearPersona(p1);
 
@@ -107,6 +107,10 @@ public class VacunArGp4 {
 //        for(CitaVacunacion c: cd.traerTodoCitaVacunacion()){
 //            System.out.println(c);
 //        }
+
+    for(CitaVacunacion cv:cd.traerCitaVacunacionIdPersona(10)){
+        System.out.println(cv);
+    }
     }
     
 }
