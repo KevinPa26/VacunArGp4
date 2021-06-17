@@ -60,8 +60,6 @@ public class PatologiaData {
                 pato = new Patologia();
                 pato.setIdPatologia(rs.getInt(1));
                 pato.setNombre(rs.getString(2));
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la patologia");
             }
             rs.close();
             ps.close();
@@ -82,8 +80,6 @@ public class PatologiaData {
                 pato = new Patologia();
                 pato.setIdPatologia(rs.getInt(1));
                 pato.setNombre(rs.getString(2));
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la patologia");
             }
             rs.close();
             ps.close();

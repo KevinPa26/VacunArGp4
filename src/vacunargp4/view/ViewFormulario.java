@@ -32,6 +32,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(false);
         jbActualizar.setEnabled(false);
         llenarPatologias();
+        jbBaja.setEnabled(false);
     }
 
     private void llenarPatologias(){
@@ -89,6 +90,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jlActivo = new javax.swing.JLabel();
         jcbActivo = new javax.swing.JCheckBox();
         jtIdPersona = new javax.swing.JTextField();
+        jbBaja = new javax.swing.JButton();
 
         jLTitulo.setText("Formulario de Inscripcion VacunAr 2021");
 
@@ -121,8 +123,8 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
 
         jLFecha.setText("Fecha de Nacimiento:");
 
-        jdcFecha.setMaxSelectableDate(new java.util.Date(1672484400000L));
-        jdcFecha.setMinSelectableDate(new java.util.Date(-1861880400000L));
+        jdcFecha.setMaxSelectableDate(new java.util.Date(1623927600000L));
+        jdcFecha.setMinSelectableDate(new java.util.Date(-1893416400000L));
 
         jLEmail.setText("Email:");
 
@@ -251,6 +253,13 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
 
         jlActivo.setText("Activo:");
 
+        jbBaja.setText("Dar de Baja");
+        jbBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBajaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,15 +302,18 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLApellido)
                                         .addGap(224, 224, 224)
-                                        .addComponent(jlError))
+                                        .addComponent(jlError)
+                                        .addGap(168, 168, 168))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(24, 24, 24)
-                                        .addComponent(jtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(168, 168, 168)
+                                        .addComponent(jtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbBaja)
+                                        .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jlError2)
@@ -452,7 +464,8 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
                     .addComponent(jBLimpiar)
                     .addComponent(jbBuscar)
                     .addComponent(jbActualizar)
-                    .addComponent(jtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBaja))
                 .addGap(27, 27, 27))
         );
 
@@ -732,6 +745,12 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
         jcbDepartamento.setSelectedItem(p.getDepartamento());
         jcbCiudad.setSelectedItem(p.getCiudad());
         jcbTrabajo.setSelectedItem(p.getTrabajo());
+        if(jtfNombre.getText() == "" || jtfNombre.getText() == null){
+            jbBaja.setEnabled(false);
+        }else{
+            jbBaja.setEnabled(true);
+        }
+        jBLimpiar.setEnabled(true);
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
@@ -802,6 +821,12 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
     private void jtfPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfPesoActionPerformed
+
+    private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
+        Persona d = pd.buscarPersonaDni(Long.parseLong(jtfDNI.getText()));
+        pd.bajaPersona(d.getIdPersona());
+        jbBaja.setEnabled(false);
+    }//GEN-LAST:event_jbBajaActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -826,6 +851,7 @@ public class ViewFormulario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLTrabajo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbActualizar;
+    private javax.swing.JButton jbBaja;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JCheckBox jcbActivo;
     private javax.swing.JComboBox<String> jcbCiudad;

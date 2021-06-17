@@ -42,8 +42,6 @@ public class DosisData {
             if(rs.next()){
                 dosis.setIdDosis(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "La dosis se creo correctamente");
-            }else{
-                JOptionPane.showMessageDialog(null, "No se pudo crear la dosis");
             }
             rs.close();
             ps.close();
@@ -65,8 +63,6 @@ public class DosisData {
                 dosis.setLab(ld.buscarLaboratorioId(rs.getInt(2)));
                 dosis.setNumSerie(rs.getInt(3));
                 dosis.setEstado(rs.getBoolean(4));
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encontro la dosis");
             }
             rs.close();
             ps.close();

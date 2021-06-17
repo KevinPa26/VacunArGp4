@@ -75,18 +75,21 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                                       <Component id="jlError" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                                       <Component id="jtIdPersona" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jbBaja" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jlError2" min="-2" max="-2" attributes="0"/>
@@ -286,6 +289,7 @@
                   <Component id="jbBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtIdPersona" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbBaja" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -348,10 +352,10 @@
     <Component class="com.toedter.calendar.JDateChooser" name="jdcFecha">
       <Properties>
         <Property name="maxSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
-          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,1,-123,103,-42,-85,-128,120"/>
+          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,1,122,25,-96,-77,-128,120"/>
         </Property>
         <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
-          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-2,78,127,71,-73,-128,120"/>
+          <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-2,71,39,-106,-117,-128,120"/>
         </Property>
       </Properties>
     </Component>
@@ -573,6 +577,14 @@
     <Component class="javax.swing.JCheckBox" name="jcbActivo">
     </Component>
     <Component class="javax.swing.JTextField" name="jtIdPersona">
+    </Component>
+    <Component class="javax.swing.JButton" name="jbBaja">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dar de Baja"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBajaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
