@@ -323,6 +323,7 @@ public class ViewCitaAplicacion extends javax.swing.JInternalFrame {
                     LocalDate nueva = citaElegida.getFecha().plusDays(28);
                     CitaVacunacion newCita = new CitaVacunacion((Persona)citaElegida.getPersona(), (Vacunatorio)citaElegida.getVacunatorio(), nueva, (LocalTime)citaElegida.getHora(), "Espera", "Segunda");
                     cvd.crearCitaVacunacion(newCita);
+                    JOptionPane.showMessageDialog(this, citaElegida.getPersona().getNombre() +" "+citaElegida.getPersona().getApellido()+" se aplico la dosis, cita cumplida");
                 }else if(jcbDosis.getSelectedItem() != null && "Segunda".equals(jtCantDosis.getText())){
                     cvd.actualizarCitaConDosis(citaElegida.getIdCita(), dosi);
                     pd.bajaPersona(citaElegida.getPersona().getIdPersona());
